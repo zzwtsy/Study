@@ -10,8 +10,11 @@ import javax.servlet.annotation.*;
  */
 @WebServlet(name = "helloServlet", urlPatterns = {"/Hello/*"},
         //所有对象在启动时创建
-        loadOnStartup = 1
-)
+        loadOnStartup = 1,
+        initParams = {
+                @WebInitParam(name = "name", value = "daydreamer"),
+                @WebInitParam(name = "password", value = "123")
+        })
 public class HelloServlet extends HttpServlet {
     private String message;
 
@@ -19,12 +22,14 @@ public class HelloServlet extends HttpServlet {
     public void init() {
         message = "Hello World!";
         System.out.println("Servlet initialization");
+        System.out.println("用户名: " + getInitParameter("name"));
+        System.out.println("密码: " + getInitParameter("password"));
     }
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.service(req, resp);
-        System.out.println("Servlet response Service");
+        System.out.println("Servlet response Service ");
     }
 
     @Override
