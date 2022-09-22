@@ -1,19 +1,30 @@
 package cn.acdt.study.day22;
 
 import java.io.*;
+import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
 /**
- * @author zzwtsy
+ * @author 孟繁兴
  */
-@WebServlet(name = "helloServlet", urlPatterns = {"/hello-servlet", "/Hello/*", "/Hello"})
+@WebServlet(name = "helloServlet", urlPatterns = {"/Hello/*"},
+        //所有对象在启动时创建
+        loadOnStartup = 1
+)
 public class HelloServlet extends HttpServlet {
     private String message;
 
     @Override
     public void init() {
         message = "Hello World!";
+        System.out.println("Servlet initialization");
+    }
+
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.service(req, resp);
+        System.out.println("Servlet response Service");
     }
 
     @Override
@@ -25,9 +36,11 @@ public class HelloServlet extends HttpServlet {
         out.println("<html><body>");
         out.println("<h1>" + message + "</h1>");
         out.println("</body></html>");
+        System.out.println("Servlet response doGet");
     }
 
     @Override
     public void destroy() {
+        System.out.println("Servlet destruction");
     }
 }
