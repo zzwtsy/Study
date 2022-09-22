@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link crossorigin="anonymous"href="https://lib.baomitu.com/normalize/latest/normalize.css" rel="stylesheet">
+    <title>Document</title>
+    <style type="text/css">
+    body {
+        background: #fff
+    }
+
+    h1 {
+        color: red;
+        text-align: center;
+    }
+
+    .box {
+        width: 150px;
+        height: 120px;
+        text-align: center;
+        line-height: 120px;
+        border: 1px solid red;
+        border-radius: 4px;
+        margin: 0 auto;
+    }
+
+    .box::before,
+    .box:after {
+        background-color: #282828;
+        filter: blur(1px);
+    }
+    </style>
+</head>
+
+<body>
+    <h1>BootStrap</h1>
+    <div class="box">Hello BootStrap</div>
+</body>
+
+</html>
