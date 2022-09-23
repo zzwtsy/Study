@@ -1,9 +1,12 @@
 package cn.acdt.hwk.day23.tools;
 
+/**
+ * @author zzwtsy
+ */
 public class Config {
     public static final Config INSTANCE = new Config();
-    private String name;
-    private String password;
+    private String name = "";
+    private String password = "";
 
     public String getName() {
         return name;

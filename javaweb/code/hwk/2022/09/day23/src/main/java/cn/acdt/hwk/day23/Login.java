@@ -7,7 +7,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-@WebServlet(urlPatterns = {"/login", "/"})
+/**
+ * @author zzwtsy
+ */
+@WebServlet(urlPatterns = {"/login", "/index.jsp"}, loadOnStartup = 1)
 public class Login extends HttpServlet {
 
     @Override
