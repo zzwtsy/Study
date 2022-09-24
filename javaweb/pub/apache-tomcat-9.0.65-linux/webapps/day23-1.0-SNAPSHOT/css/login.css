@@ -1,0 +1,71 @@
+body {
+    background-image: url(../img/bg.png);
+}
+
+form {
+    position: absolute;
+    width: 400px;
+    height: 280px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: none;
+    margin: auto;
+    padding: 15px;
+    border-radius: 20px;
+    background-image: linear-gradient(135deg, #6772FF 0, #00F9E5 100%)
+
+}
+
+table {
+    width: 300px;
+    margin: 0 auto;
+    line-height: 100px;
+}
+
+div {
+    width: 255px;
+    margin: 0 auto;
+}
+
+.mr50 {
+    margin-right: 50px;
+}
+
+.button {
+    height: 40px;
+    width: 100px;
+    border: none;
+    border-radius: 20px;
+    background-image: linear-gradient(135deg, #2AFADF 10%, #4C83FF 100%);
+}
+
+.button:hover {
+    background-image: linear-gradient(315deg, #2AFADF 10%, #4C83FF 100%);
+}
+
+.userinput {
+    height: 40px;
+    border-radius: 25px;
+    border: none;
+    text-align: center;
+    background-image: linear-gradient(135deg, #2AFADF 10%, #4C83FF 100%);
+}
+
+.userinput:hover {
+    outline: none;
+    background-image: linear-gradient(315deg, #2AFADF 10%, #4C83FF 100%)
+}
+
+.userinput:focus-visible {
+    outline: none;
+}
+
+.userinput::placeholder {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
