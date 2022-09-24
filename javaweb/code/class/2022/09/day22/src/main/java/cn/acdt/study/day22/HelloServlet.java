@@ -1,16 +1,21 @@
 package cn.acdt.study.day22;
 
-import java.io.*;
 import javax.servlet.ServletException;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.annotation.WebInitParam;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * @author 孟繁兴
  */
-@WebServlet(name = "helloServlet", urlPatterns = {"/Hello/*"},
+@WebServlet(name = "helloServlet", urlPatterns = {"/Hello/*", "HelloServlet"},
         //所有对象在启动时创建
         loadOnStartup = 1,
+        asyncSupported = true,
         initParams = {
                 @WebInitParam(name = "name", value = "daydreamer"),
                 @WebInitParam(name = "password", value = "123")
