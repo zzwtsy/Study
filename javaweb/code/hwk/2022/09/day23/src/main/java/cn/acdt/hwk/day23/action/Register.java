@@ -1,4 +1,4 @@
-package cn.acdt.hwk.day23;
+package cn.acdt.hwk.day23.action;
 
 import cn.acdt.hwk.day23.tools.Config;
 

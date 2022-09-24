@@ -1,4 +1,4 @@
-<%--@elvariable id="name" type="cn.acdt.hwk.day23.Login"--%>
+<%--@elvariable id="name" type="cn.acdt.hwk.day23.action.Login"--%>
 <%--
   Created by IntelliJ IDEA.
   User: 32262

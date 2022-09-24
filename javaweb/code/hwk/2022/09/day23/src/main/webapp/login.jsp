@@ -1,4 +1,4 @@
-<%--@elvariable id="message" type="cn.acdt.hwk.day23.Login"--%>
+<%--@elvariable id="message" type="cn.acdt.hwk.day23.action.Login"--%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
