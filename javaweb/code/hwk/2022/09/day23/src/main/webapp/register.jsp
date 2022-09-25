@@ -9,17 +9,12 @@
 <html>
 <head>
     <title>注册页面</title>
-    <link rel="stylesheet" href="./css/login.css">
-    <style>
-        form {
-            height: 370px;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/style.css">
     <script type="text/javascript">
         function check() {
-            let name = document.getElementById("username").value;
-            let pwd1 = document.getElementById("pwd1").value;
-            let pwd2 = document.getElementById("pwd2").value;
+            let name = document.getElementById("rusername").value;
+            let pwd1 = document.getElementById("rpassword1").value;
+            let pwd2 = document.getElementById("rpassword2").value;
             if (name === "" || name == null) {
                 alert("用户名不能为空")
                 return false;
@@ -39,40 +34,27 @@
     </script>
 </head>
 <body>
-<form method="post" action="register">
-    <table>
-        <tr>
-            <td>用户名：</td>
-            <td>
-                <label>
-                    <input class="userinput" id="username" type="text" name="rusername" placeholder="请输入用户名">
-                </label>
-            </td>
-        </tr>
-        <tr>
-            <td>用户密码：</td>
-            <td>
-                <label>
-                    <input class="userinput" id="pwd1" type="password" name="rpassword1" placeholder="请输入用户密码">
-                </label>
-            </td>
-        </tr>
-        <tr>
-            <td>再次输入密码：</td>
-            <td>
-                <label>
-                    <input class="userinput" id="pwd2" type="password" name="rpassword2"
-                           placeholder="请再次输入用户密码" onblur="check()">
-                </label>
-            </td>
-        </tr>
-    </table>
-    <div>
-        <a href="login.jsp">
-            <input class="mr50 button" type="button" name="login" value="去登录">
-        </a>
-        <input class="button" type="submit" name="register" value="注册" onclick="return check()">
-    </div>
-</form>
+<div class="content">
+    <form class="login" action="register" method="post">
+        <div class="circle-orange"></div>
+        <h2 class="z-index99">注册页面</h2>
+        <label class="z-index99">
+            <input type="text" name="rusername" id="rusername" placeholder="请输入用户名">
+        </label>
+        <label class="z-index99">
+            <input type="password" name="rpassword1" id="rpassword1" placeholder="请输入密码">
+        </label>
+        <label class="z-index99">
+            <input type="password" name="rpassword2" id="rpassword2" placeholder="再次输入密码">
+        </label>
+        <div class="z-index99 button-box">
+            <a href="login.jsp">
+                <button class="button" type="button" value="登录">登录</button>
+            </a>
+            <button class="button" type="submit" value="注册" onclick="return check()">注册</button>
+        </div>
+        <div class="circle-blue"></div>
+    </form>
+</div>
 </body>
 </html>

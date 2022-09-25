@@ -25,14 +25,15 @@ public class Login extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("doPost");
         request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("username");
-        String password = request.getParameter("password");
+        String password = request.getParameter("userpwd");
         if (name.equals(Config.INSTANCE.getName()) && password.equals(Config.INSTANCE.getPassword())) {
             request.setAttribute("name", Config.INSTANCE.getName());
             request.getRequestDispatcher("welcome.jsp").forward(request, response);
         } else {
-            request.setAttribute("message", "false");
+            request.setAttribute("message", "*用户名或密码错误*");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }

@@ -11,34 +11,20 @@
 <html>
 <head>
     <title>欢迎页面</title>
+    <link rel="stylesheet" href="./css/style.css">
     <style>
-        body {
-            background-image: url(./img/bg.png);
-        }
-
-        div {
-            position: absolute;
-            width: 400px;
-            height: 280px;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            border: none;
-            margin: auto;
-            padding: 15px;
-            border-radius: 20px;
-            background-image: linear-gradient(135deg, #6772FF 0, #00F9E5 100%)
-        }
-
         h1 {
-            text-align: center;
+            z-index: 99;
         }
     </style>
 </head>
 <body>
-<div>
-    <h1>Welcome ${name}</h1>
+<div class="content">
+    <div class="login">
+        <div class="circle-orange"></div>
+        <h1>Welcome ${name}</h1>
+        <div class="circle-blue"></div>
+    </div>
 </div>
 </body>
 </html>
