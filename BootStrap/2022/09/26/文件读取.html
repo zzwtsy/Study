@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <span>上传文本后请前往console查看fileList</span>
+    <br>
+    <input id="fileList" type="file" multiple onclick="fileList()">
+    <br>
+    <span>上传文本</span>
+    <br>
+    <input id="file" type="file" multiple onclick="file()">
+    <br>
+    <span>上传图片</span>
+    <br>
+    <input id="img" type="file" value="图片" multiple onclick="img()">
+    <div></div>
+    <img src="" alt="test">
+    <script src="../../../pun_js/jquery-3.6.1.min.js"></script>
+    <script>
+    function fileList() {
+        let file = document.querySelector('#fileList');
+        file.onchange = function() {
+            console.log(this.files)
+        }
+    }
+
+    function img() {
+        let file = document.querySelector('#img');
+        let img = document.querySelector('img');
+        file.onchange = function() {
+            let urlReader = new FileReader();
+            urlReader.readAsDataURL(this.files[0]);
+            urlReader.onload = function() {
+                img.src = this.result;
+            }
+        }
+    }
+
+    function file() {
+        let file = document.querySelector('#file');
+        let div = document.querySelector('div');
+        file.onchange = function() {
+            let reader = new FileReader();
+            reader.readAsText(this.files[0]);
+
+            reader.onload = function() {
+                div.innerHTML = reader.result;
+            }
+        }
+    }
+    </script>
+</body>
+
+</html>

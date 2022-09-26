@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body {
+        padding: 0;
+        margin: 0;
+        background-color: #f7f7f7;
+    }
+
+    p {
+        width: 200px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        margin: 100px auto;
+        color: #fff;
+        font-size: 24px;
+        background-color: #000;
+        display: none;
+    }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="../../../pub_img/images/img1.jpg" alt="">
+        <button id="full">全屏</button>
+        <button id="cancelFull">取消全屏</button>
+        <button id="isFull">是否全屏</button>
+        <script src="../../../pun_js/jquery-3.6.1.min.js"></script>
+    </div>
+    <script>
+    var div = document.querySelector('div');
+    document.querySelector('#full').onclick = function() {
+        if (div.requestFullScreen) { // 正常浏览器 
+            div.requestFullScreen();
+        } else if (div.webkitRequestFullScreen) { // webkit
+            div.webkitRequestFullScreen();
+        } else if (div.mozRequestFullScreen) { // moz
+            div.mozRequestFullScreen();
+        } else if (div.msRequestFullscreen) { // ms
+            div.msRequestFullscreen();
+        } else if (div.oRequestFullScreen) { // o
+            div.oRequestFullScreen();
+        } else {
+            alert('暂不支持您的浏览器');
+        }
+    };
+    document.querySelector('#isFull').onclick = function() {
+        alert(document.webkitIsFullScreen);
+    }
+    document.querySelector('#cancelFull').onclick = function() {
+        if (document.webkitCancelFullScreen) {
+            document.webkitCancelFullScreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.msCancelFullScreen) {
+            document.msCancelFullScreen();
+        } else if (document.oCancelFullScreen) {
+            document.oCancelFullScreen();
+        } else {
+            alert('暂不支持您的浏览器');
+        }
+    }
+    </script>
+</body>
+
+</html>

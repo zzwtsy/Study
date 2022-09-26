@@ -21,11 +21,11 @@ public class Login extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.getRequestDispatcher("login.jsp").forward(request, response);
+        System.out.println("doGet" + getClass().getSimpleName());
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("doPost");
         request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("username");
         String password = request.getParameter("userpwd");
@@ -36,6 +36,7 @@ public class Login extends HttpServlet {
             request.setAttribute("message", "*用户名或密码错误*");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
+        System.out.println("doPost" + getClass().getSimpleName());
     }
 
     @Override

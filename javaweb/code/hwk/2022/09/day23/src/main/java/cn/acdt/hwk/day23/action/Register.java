@@ -17,6 +17,7 @@ public class Register extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.getRequestDispatcher("register.jsp").forward(request, response);
+        System.out.println("doGet" + getClass().getSimpleName());
     }
 
     @Override
@@ -27,5 +28,6 @@ public class Register extends HttpServlet {
         Config.INSTANCE.setName(name);
         Config.INSTANCE.setPassword(password);
         request.getRequestDispatcher("login.jsp").forward(request, response);
+        System.out.println("doPost" + getClass().getSimpleName());
     }
 }
