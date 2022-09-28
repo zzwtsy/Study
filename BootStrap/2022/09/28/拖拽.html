@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    #div1,
+    #div2 {
+        width: 500px;
+        height: 400px;
+        border: 1px solid red;
+    }
+
+    #p1,
+    #p2,
+    #p3,
+    #p4,
+    #p5 {
+        text-align: center;
+    }
+
+    #p2 {
+        background-color: #282828;
+        color: #fff;
+    }
+
+    #p3 {
+        background-color: red;
+    }
+
+    #p4 {
+        background: green;
+    }
+
+    #p5 {
+        background: pink;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="div1">
+        <p id="p1" draggable="false">1</p>
+        <p id="p2" draggable="true">2</p>
+        <p id="p3" draggable="true">3</p>
+        <p id="p4" draggable="true">4</p>
+        <p id="p5" draggable="true">5</p>
+    </div>
+    <div id="div2"></div>
+    <script src="../../../pun_js/jquery-3.6.1.min.js"></script>
+    <script>
+    document.ondragstart = function(event) {
+        console.log(event.target.id);
+        event.dataTransfer.setData('text/html', event.target.id);
+    };
+    document.ondrag = function(event) {
+        console.log('源对象正在被移动');
+    };
+    document.ondragend = function(event) {
+        console.log('源对象移动结束');
+    };
+    document.ondragenter = function(event) {
+        console.log('目标对象正在拖动进入');
+    };
+    document.ondragover = function(event) {
+        console.log('源对象悬停在目标上方');
+        return false;
+    };
+    document.ondrop = function(event) {
+        console.log('上方释放');
+        let id = event.dataTransfer.getData('text/html');
+        event.target.appendChild(document.getElementById(id));
+    };
+    </script>
+</body>
+
+</html>
