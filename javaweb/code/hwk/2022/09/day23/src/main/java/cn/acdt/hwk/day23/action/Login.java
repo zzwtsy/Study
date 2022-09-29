@@ -10,7 +10,7 @@ import javax.servlet.annotation.*;
 /**
  * @author 孟繁兴
  */
-@WebServlet(urlPatterns = {"/login", "/index.jsp"}, loadOnStartup = 1)
+@WebServlet(urlPatterns = {"/login", "/index.jsp"})
 public class Login extends HttpServlet {
 
     @Override
@@ -21,7 +21,7 @@ public class Login extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.getRequestDispatcher("login.jsp").forward(request, response);
-        System.out.println("doGet" + getClass().getSimpleName());
+        System.out.println("doGet-" + getClass().getSimpleName());
     }
 
     @Override
@@ -30,13 +30,19 @@ public class Login extends HttpServlet {
         String name = request.getParameter("username");
         String password = request.getParameter("userpwd");
         if (name.equals(Config.INSTANCE.getName()) && password.equals(Config.INSTANCE.getPassword())) {
-            request.setAttribute("name", Config.INSTANCE.getName());
-            request.getRequestDispatcher("welcome.jsp").forward(request, response);
+
+//              request.setAttribute("name", Config.INSTANCE.getName());
+//             转发模式
+//             request.getRequestDispatcher("welcome.jsp").forward(request, response);
+//             重定向模式：无法使用Attribute传递信息
+
+            request.getSession().setAttribute("name", name);
+            response.sendRedirect(request.getContextPath() + "/welcome.jsp");
         } else {
             request.setAttribute("message", "*用户名或密码错误*");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
-        System.out.println("doPost" + getClass().getSimpleName());
+        System.out.println("doPost-" + getClass().getSimpleName());
     }
 
     @Override

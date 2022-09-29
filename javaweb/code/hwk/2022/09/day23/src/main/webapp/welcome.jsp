@@ -1,11 +1,4 @@
 <%--@elvariable id="name" type="cn.acdt.hwk.day23.action.Login"--%>
-<%--
-  Created by IntelliJ IDEA.
-  User: zzwtsy
-  Date: 2022/9/23
-  Time: 17:31
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
@@ -35,26 +28,26 @@
 <div class="content">
     <div class="login">
         <div class="circle-orange"></div>
-        <h1 class="z-index99">Welcome ${name}</h1>
+        <h1 class="z-index99">欢迎 ${name}</h1>
         <h4 class="z-index99">请选择你的爱好</h4>
         <form class="z-index99" method="post" action="hobby">
             <label>
-                <input class="checkbox" type="checkbox" name="hobby" value="basketball">
+                <input class="checkbox" type="checkbox" name="hobby" value="篮球">
                 篮球
             </label>
             <br>
             <label>
-                <input class="checkbox" type="checkbox" name="hobby" value="football">
+                <input class="checkbox" type="checkbox" name="hobby" value="足球">
                 足球
             </label>
             <br>
             <label>
-                <input class="checkbox" type="checkbox" name="hobby" value="computer">
+                <input class="checkbox" type="checkbox" name="hobby" value="计算机">
                 计算机
             </label>
             <br>
             <label>
-                <input class="checkbox" type="checkbox" name="hobby" value="aerobics">
+                <input class="checkbox" type="checkbox" name="hobby" value="健美操">
                 健美操
             </label>
             <br>

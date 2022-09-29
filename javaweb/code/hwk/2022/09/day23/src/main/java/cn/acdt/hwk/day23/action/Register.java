@@ -28,6 +28,6 @@ public class Register extends HttpServlet {
         Config.INSTANCE.setName(name);
         Config.INSTANCE.setPassword(password);
         request.getRequestDispatcher("login.jsp").forward(request, response);
-        System.out.println("doPost" + getClass().getSimpleName());
+        System.out.println("doPost-" + getClass().getSimpleName());
     }
 }
