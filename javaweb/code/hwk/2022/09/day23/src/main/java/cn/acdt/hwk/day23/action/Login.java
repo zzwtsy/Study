@@ -8,7 +8,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
 /**
- * @author zzwtsy
+ * @author 孟繁兴
  */
 @WebServlet(urlPatterns = {"/login", "/index.jsp"}, loadOnStartup = 1)
 public class Login extends HttpServlet {

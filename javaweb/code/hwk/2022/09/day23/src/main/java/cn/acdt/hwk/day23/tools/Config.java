@@ -1,7 +1,7 @@
 package cn.acdt.hwk.day23.tools;
 
 /**
- * @author zzwtsy
+ * @author 孟繁兴
  */
 public class Config {
     public static final Config INSTANCE = new Config();
