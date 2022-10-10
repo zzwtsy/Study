@@ -1,0 +1,24 @@
+li {
+    list-style: none;
+}
+
+.banner {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.bannerImg {
+    width: 1000%;
+    position: relative;
+}
+
+.bannerImg>li {
+    width: 10%;
+    float: left;
+}
+
+.bannerImg>li img {
+    display: block;
+    width: 100%;
+}

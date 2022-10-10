@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/demo01.css">
+    <script src="../../../pun_js/jquery-3.6.1.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="banner">
+        <ul class="bannerImg clearfix">
+            <li>
+                <a href="javascript:;">
+                    <img src="../../../pub_img/banner/1.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img src="../../../pub_img/banner/2.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img src="../../../pub_img/banner/3.jpg" alt="">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var banner = document.querySelector('.banner');
+        var imgBox = document.querySelector('.bannerImg');
+        var lis = document.querySelectorAll('li');
+        var count = lis.length;
+        var bannerWidth = banner.offsetWidth;
+        imgBox.style.width = count * bannerWidth + 'px';
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].style.width = bannerWidth + 'px';
+        }
+        var index = 1;
+        imgBox.style.left = -bannerWidth + 'px';
+        var startX, moveX, distanceX;
+        imgBox.addEventListener('touchstart', function (e) {
+            console.log('touchstart' + e);
+            startX = e.targetTouches[0].clientX;
+        });
+        imgBox.addEventListener('touchmove', function (e) {
+            console.log('touchmove' + e);
+            moveX = e.targetTouches[0].clientX;
+            distanceX = moveX - startX;
+            imgBox.style.transition = 'none';
+            imgBox.style.left = (-index * bannerWidth + distanceX) + 'px';
+        });
+        imgBox.addEventListener('touchend', function (e) {
+            console.log('touchend' + e);
+            if (Math.abs(distanceX) > 80) {
+                if (distanceX > 0) {
+                    index--;
+                } else {
+                    index++;
+                }
+                imgBox.style.transition = 'left 0.5s ease-in-out';
+                imgBox.style.left = (-index * bannerWidth) + 'px';
+            } else if (Math.abs(distanceX) > 0) {
+                imgBox.style.transition = 'left 0.5s ease-in-out';
+                imgBox.style.left = -index * bannerWidth + 'px';
+            }
+        });
+        imgBox.addEventListener('webkitTransitionEnd', function (e) {
+            /*如果到了最后一张(count-1)，回到索引1*/
+            /*如果到了第一张(0)，回到索引count-2*/
+            if (index == count - 1) {
+                index = 1;
+            } else if (index == 0) {
+                index = count - 2;
+            }
+            /*清除过渡*/
+            imgBox.style.transition = "none";
+            /*设置偏移*/
+            imgBox.style.left = -index * bannerWidth + "px";
+        });
+    </script>
+</body>
+
+</html>
