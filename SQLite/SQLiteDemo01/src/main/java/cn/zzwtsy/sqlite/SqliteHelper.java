@@ -3,9 +3,8 @@ package cn.zzwtsy.sqlite;
 import java.sql.*;
 import java.util.List;
 
+import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 
 /**
@@ -15,7 +14,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author haoqipeng
  */
-@Slf4j
+@Log4j2
 public class SqliteHelper {
 
     private Connection connection;
@@ -38,7 +37,7 @@ public class SqliteHelper {
      * @param dbFilePath db文件路径
      * @return 数据库连接
      * @throws ClassNotFoundException ClassNotFoundException
-     * @throws SQLException SQLException
+     * @throws SQLException           SQLException
      */
     public Connection getConnection(String dbFilePath) throws ClassNotFoundException, SQLException {
         Connection conn;
@@ -50,30 +49,31 @@ public class SqliteHelper {
     /**
      * 执行sql查询
      *
-     * @param sql        sql select 语句
+     * @param sql sql select 语句
      * @return 查询结果
      * @throws SQLException           SQLException
      * @throws ClassNotFoundException ClassNotFoundException
      */
     public ResultSet executeQuery(String sql) throws SQLException, ClassNotFoundException {
-        try {
-            return getStatement().executeQuery(sql);
-        } finally {
-            destroyed();
-        }
+        ResultSet resultSet1;
+//        try {
+            resultSet1 = getStatement().executeQuery(sql);
+//        } finally {
+//            destroyed();
+//        }
+        return resultSet1;
     }
 
     /**
      * 执行数据库更新sql语句
      *
      * @param sql sql语句
-     * @return 更新行数
-     * @throws SQLException SQLException
+     * @throws SQLException           SQLException
      * @throws ClassNotFoundException ClassNotFoundException
      */
-    public int executeUpdate(String sql) throws SQLException, ClassNotFoundException {
+    public void executeUpdate(String sql) throws SQLException, ClassNotFoundException {
         try {
-            return getStatement().executeUpdate(sql);
+            getStatement().executeUpdate(sql);
         } finally {
             destroyed();
         }
@@ -84,7 +84,7 @@ public class SqliteHelper {
      * 执行多个sql更新语句
      *
      * @param sqlList sql列表
-     * @throws SQLException SQLException
+     * @throws SQLException           SQLException
      * @throws ClassNotFoundException ClassNotFoundException
      */
     public void executeUpdate(String... sqlList) throws SQLException, ClassNotFoundException {
@@ -101,7 +101,7 @@ public class SqliteHelper {
      * 执行数据库更新 sql List
      *
      * @param sqlList sql列表
-     * @throws SQLException SQLException
+     * @throws SQLException           SQLException
      * @throws ClassNotFoundException ClassNotFoundException
      */
     public void executeUpdate(List<String> sqlList) throws SQLException, ClassNotFoundException {
