@@ -1,0 +1,38 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #f7f7f7;
+}
+
+.box {
+    width: 320px;
+    height: 320px;
+    margin: 100px auto;
+    position: relative;
+}
+
+.tap {
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    line-height: 200px;
+    font-size: 30px;
+    margin: -100px 0 0 -100px;
+    background-color: red;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+.click {
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    line-height: 300px;
+    font-size: 30px;
+    margin: -150px 0 0 -150px;
+    background-color: pink;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}

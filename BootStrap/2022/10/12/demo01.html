@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../../pun_js/fastclick.js"></script>
+    <script src="../../../pun_js/jquery-3.6.1.min.js"></script>
+    <link rel="stylesheet" href="./css/demo01.css">
+    <script>
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function () {
+                FastClick.attach(document.body);
+            }, false);
+        }
+    </script>
+    <title>Document</title>
+</head>
+
+<body>
+    <dvi class="click">
+        click
+    </dvi>
+    <div class="tap">
+        tap
+    </div>
+    <script>
+        let tap = document.querySelector('.tap');
+        let click = document.querySelector('.click');
+        tap.addEventListener('touchstart', function () {
+            tap.style.visibility = 'hidden';
+        });
+        click.onclick = function () {
+            console.log('点击');
+        }
+    </script>
+</body>
+
+</html>
