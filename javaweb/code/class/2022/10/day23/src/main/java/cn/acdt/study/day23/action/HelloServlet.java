@@ -1,4 +1,4 @@
-package cn.acdt.study.day23;
+package cn.acdt.study.day23.action;
 
 import java.io.*;
 import javax.servlet.http.*;
@@ -25,6 +25,17 @@ public class HelloServlet extends HttpServlet {
         out.println("<html><body>");
         out.println("<h1>" + message + "</h1>");
         out.println("</body></html>");
+        String contextPath = request.getContextPath();
+        String servletPath = request.getServletPath();
+        String pathInfo = request.getPathInfo();
+        System.out.println("pathInfo:" + pathInfo);
+        System.out.println("servletPath:" + servletPath);
+        System.out.println("contextPath:" + contextPath);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+
     }
 
     @Override
