@@ -1,0 +1,1 @@
+window.mySwiper = Swipe(document.getElementById('silder'));s
