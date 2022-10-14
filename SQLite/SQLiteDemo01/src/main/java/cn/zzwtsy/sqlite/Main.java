@@ -1,11 +1,9 @@
 package cn.zzwtsy.sqlite;
 
-import lombok.extern.log4j.Log4j;
 import lombok.extern.log4j.Log4j2;
 
 import java.io.File;
 import java.sql.*;
-import java.util.Scanner;
 
 /**
  * @author zzwtsy
