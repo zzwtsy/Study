@@ -1,3 +1,4 @@
+<%--@elvariable id="count" type="cn.acdt.hwk.day23.action.Login.count"--%>
 <%--@elvariable id="name" type="cn.acdt.hwk.day23.action.Login"--%>
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
@@ -29,30 +30,31 @@
     <div class="login">
         <div class="circle-orange"></div>
         <h1 class="z-index99">欢迎 ${name}</h1>
-        <h4 class="z-index99">请选择你的爱好</h4>
-        <form class="z-index99" method="post" action="hobby">
-            <label>
-                <input class="checkbox" type="checkbox" name="hobby" value="篮球">
-                篮球
-            </label>
-            <br>
-            <label>
-                <input class="checkbox" type="checkbox" name="hobby" value="足球">
-                足球
-            </label>
-            <br>
-            <label>
-                <input class="checkbox" type="checkbox" name="hobby" value="计算机">
-                计算机
-            </label>
-            <br>
-            <label>
-                <input class="checkbox" type="checkbox" name="hobby" value="健美操">
-                健美操
-            </label>
-            <br>
-            <input class="button" type="submit" value="提交">
-        </form>
+        <h4 class="z-index99">当前页面访问量：${count}</h4>
+<%--        <h4 class="z-index99">请选择你的爱好</h4>--%>
+<%--        <form class="z-index99" method="post" action="hobby">--%>
+<%--            <label>--%>
+<%--                <input class="checkbox" type="checkbox" name="hobby" value="篮球">--%>
+<%--                篮球--%>
+<%--            </label>--%>
+<%--            <br>--%>
+<%--            <label>--%>
+<%--                <input class="checkbox" type="checkbox" name="hobby" value="足球">--%>
+<%--                足球--%>
+<%--            </label>--%>
+<%--            <br>--%>
+<%--            <label>--%>
+<%--                <input class="checkbox" type="checkbox" name="hobby" value="计算机">--%>
+<%--                计算机--%>
+<%--            </label>--%>
+<%--            <br>--%>
+<%--            <label>--%>
+<%--                <input class="checkbox" type="checkbox" name="hobby" value="健美操">--%>
+<%--                健美操--%>
+<%--            </label>--%>
+<%--            <br>--%>
+<%--            <input class="button" type="submit" value="提交">--%>
+<%--        </form>--%>
         <div class="circle-blue"></div>
     </div>
 </div>

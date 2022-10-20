@@ -6,13 +6,16 @@
     src: url("../fonts/HarmonyOS_Sans_SC_Medium.ttf");
 }
 
+* {
+    font-family: HarmonyOS_Medium, serif;
+}
+
 body {
     margin: 0;
     padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: HarmonyOS_Medium, serif;
     background-image: linear-gradient(267deg, #89b9ff, #75ccff, #57dfff, #05f2ff)
 }
 
