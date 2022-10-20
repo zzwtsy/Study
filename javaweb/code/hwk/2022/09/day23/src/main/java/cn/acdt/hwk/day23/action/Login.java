@@ -37,7 +37,7 @@ public class Login extends HttpServlet {
             //计数器
             int count;
             if (servletContext.getAttribute("count") == null) {
-                //表示第一次用户登录进来，这是还没有创建count属性，创建此属性，并将其置为1
+                //表示第一次用户登录进来，这时还没有创建count属性，创建此属性，并将其置为1
                 servletContext.setAttribute("count", 1);
             } else {
                 count = (Integer) servletContext.getAttribute("count");
