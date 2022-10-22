@@ -33,11 +33,7 @@
         <h2 class="z-index99">注册页面</h2>
         <label class="z-index99">
             <input type="text" name="rusername" id="rusername" placeholder="请输入用户名">
-        </label>
-        <label class="z-index99">
             <input type="password" name="rpassword1" id="rpassword1" placeholder="请输入密码">
-        </label>
-        <label class="z-index99">
             <input type="password" name="rpassword2" id="rpassword2" placeholder="再次输入密码">
         </label>
         <div class="z-index99 button-box">
