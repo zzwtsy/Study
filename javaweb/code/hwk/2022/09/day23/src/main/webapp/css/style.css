@@ -64,6 +64,10 @@ h2 {
     color: #FFFFFF;
 }
 
+h4, h3, h1, span {
+    color: #0066CC;
+}
+
 input {
     /*width: 230px;*/
     height: 38px;

@@ -4,23 +4,27 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * @author 孟繁兴
+ * @author zzwtsy
  */
 @WebServlet(urlPatterns = "/hobby")
 public class Hobby extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
-        HttpSession session = request.getSession();
+    @SuppressWarnings("unchecked")
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+        request.setCharacterEncoding("UTF-8");
+        ArrayList<String> sessionCarts = (ArrayList<String>) request.getSession().getAttribute("carts");
         ArrayList<String> carts;
-        if (session.getAttribute("carts") == null) {
+        if (sessionCarts == null) {
             carts = new ArrayList<>();
         } else {
-            carts = (ArrayList<String>) session.getAttribute("carts");
+            carts = sessionCarts;
         }
         String[] goods = request.getParameterValues("goods");
         int num = 0;
@@ -28,8 +32,42 @@ public class Hobby extends HttpServlet {
             num = goods.length;
             Collections.addAll(carts, goods);
         }
-        session.setAttribute("carts", carts);
+        request.getSession().setAttribute("carts", carts);
         response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter writer = response.getWriter()) {
+            writer.println("<html>\n" +
+                    "\n" +
+                    "<head>\n" +
+                    "    <link rel=\"stylesheet\" href=\"./css/style.css\">\n" +
+                    "    <style>\n" +
+                    "        .button {\n" +
+                    "            width: 90%;\n" +
+                    "        }\n" +
+                    "    </style>\n" +
+                    "</head>\n" +
+                    "<div class=\"login\">\n" +
+                    "    <div class=\"circle-orange\"></div>\n" +
+                    "    <form class=\"z-index99\">\n" +
+                    "        <h3>您添加了" + num + "件商品</h3><br>\n" +
+                    "        <div class=\"z-index99 button-box\">\n" +
+                    "            <a href=\"welcome.jsp\">\n" +
+                    "                <button class=\"button\" type=\"button\">继续购物</button>\n" +
+                    "            </a>\n" +
+                    "            <a href=\"ShowShoppingCart\">\n" +
+                    "                <button class=\"button\" type=\"button\">查看购物车</button>\n" +
+                    "            </a>\n" +
+                    "            <a href=\"login.jsp\">\n" +
+                    "                <button class=\"button\" type=\"button\">退出</button>\n" +
+                    "            </a>\n" +
+                    "        </div>\n" +
+                    "        <div class=\"circle-blue\"></div>\n" +
+                    "</div>\n" +
+                    "\n" +
+                    "</html>");
+            writer.flush();
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
 
 //        request.setCharacterEncoding("UTF-8");
 //        String[] hobby = request.getParameterValues("hobby");

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @author 孟繁兴
+ * @author zzwtsy
  */
 @WebServlet(urlPatterns = "/register")
 public class Register extends HttpServlet {

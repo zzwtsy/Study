@@ -27,7 +27,7 @@
 </head>
 <body>
 <div class="content">
-    <form class="login" action="login" method="post">
+    <form class="login" action="${pageContext.request.contextPath}/login" method="post">
         <div class="circle-orange"></div>
         <h2 class="z-index99">登录页面</h2>
         <span class="z-index99" style="color:red">${message}</span>

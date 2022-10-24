@@ -26,10 +26,6 @@
         .button {
             width: 200px;
         }
-
-        h4, h1, span {
-            color: #0066CC;
-        }
     </style>
 </head>
 <body>
@@ -38,7 +34,7 @@
         <div class="circle-orange"></div>
         <h1 class="z-index99">欢迎 ${name}</h1>
         <h4 class="z-index99">请选择你喜欢的商品</h4>
-        <form class="z-index99" method="post" action="hobby">
+        <form class="z-index99" method="post" action="${pageContext.request.contextPath}/hobby">
             <label>
                 <input class="checkbox" type="checkbox" name="goods" value="电话">
                 电话
