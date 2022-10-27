@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import static java.lang.Thread.sleep;
+
 /**
  * 显示购物车商品
  *
@@ -26,6 +28,14 @@ public class ShowShoppingCart extends HttpServlet {
         for (String o : carts) {
             writer.println(o);
         }
+        writer.println("<br><a href=\"Shopping\">继续购物</a>");
+        writer.println("<br><a href=\"Logout\">退出</a>");
         writer.flush();
+        writer.close();
+        try {
+            sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

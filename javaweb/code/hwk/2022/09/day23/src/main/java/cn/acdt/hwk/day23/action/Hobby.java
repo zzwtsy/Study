@@ -50,13 +50,13 @@ public class Hobby extends HttpServlet {
                     "    <form class=\"z-index99\">\n" +
                     "        <h3>您添加了" + num + "件商品</h3><br>\n" +
                     "        <div class=\"z-index99 button-box\">\n" +
-                    "            <a href=\"welcome.jsp\">\n" +
+                    "            <a href=\"Shopping\">\n" +
                     "                <button class=\"button\" type=\"button\">继续购物</button>\n" +
                     "            </a>\n" +
                     "            <a href=\"ShowShoppingCart\">\n" +
                     "                <button class=\"button\" type=\"button\">查看购物车</button>\n" +
                     "            </a>\n" +
-                    "            <a href=\"login.jsp\">\n" +
+                    "            <a href=\"Logout\">\n" +
                     "                <button class=\"button\" type=\"button\">退出</button>\n" +
                     "            </a>\n" +
                     "        </div>\n" +
@@ -68,14 +68,5 @@ public class Hobby extends HttpServlet {
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
-
-//        request.setCharacterEncoding("UTF-8");
-//        String[] hobby = request.getParameterValues("hobby");
-//        if (hobby != null) {
-//            System.out.println("***打印爱好开始***");
-//            for (String hobbys : hobby) {
-//                System.out.println(hobbys);
-//            }
-//            System.out.println("^^^打印爱好结束^^^");
     }
 }

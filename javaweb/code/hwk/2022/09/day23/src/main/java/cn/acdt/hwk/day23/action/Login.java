@@ -52,8 +52,4 @@ public class Login extends HttpServlet {
         }
         System.out.println("doPost-" + getClass().getSimpleName());
     }
-
-    @Override
-    public void destroy() {
-    }
 }
