@@ -34,7 +34,7 @@ public class AutoLoginSvl extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String username = request.getParameter("uname");
         String password = request.getParameter("upwd");
-        if (username.equals("admin") && password.equals("admin")) {
+        if ("admin".equals(username) && "admin".equals(password)) {
             //身份
             HttpSession session = request.getSession();
             session.setAttribute("username", username);

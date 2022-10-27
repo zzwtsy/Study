@@ -23,7 +23,6 @@ public class WelcomeSvl extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
 
-
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
@@ -33,7 +32,7 @@ public class WelcomeSvl extends HttpServlet {
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("mayLogin")) {
+                if ("myLogin".equals(cookie.getName())) {
                     session.setAttribute("username", cookie.getValue());
                     break;
                 }
