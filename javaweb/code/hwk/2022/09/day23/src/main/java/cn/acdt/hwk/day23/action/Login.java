@@ -11,7 +11,7 @@ import javax.servlet.annotation.*;
 /**
  * @author 孟繁兴
  */
-@WebServlet(urlPatterns = {"/login", "/index.jsp"})
+@WebServlet("/LoginSvl")
 public class Login extends HttpServlet {
 
     @Override
@@ -45,6 +45,10 @@ public class Login extends HttpServlet {
                 //重新更新count属性中的数据
                 servletContext.setAttribute("count", count);
             }
+            Cookie cookie = new Cookie("myLogin", name);
+            //cookie默认保存10分钟（600秒）
+            cookie.setMaxAge(600);
+            response.addCookie(cookie);
             response.sendRedirect(request.getContextPath() + "/welcome.jsp");
         } else {
             request.setAttribute("message", "*用户名或密码错误*");
