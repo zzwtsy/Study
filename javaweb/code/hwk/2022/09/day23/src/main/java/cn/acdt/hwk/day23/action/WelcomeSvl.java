@@ -12,18 +12,13 @@ import java.io.IOException;
  * @author zzwtsy
  * @date 2022/10/27
  */
-@WebServlet("/")
+@WebServlet("/WelcomeSvl")
 public class WelcomeSvl extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-
-
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("welcome.jsp").forward(request, response);
-        String realPath = request.getServletContext().getRealPath("/css");
-        System.out.println(realPath);
     }
 }
