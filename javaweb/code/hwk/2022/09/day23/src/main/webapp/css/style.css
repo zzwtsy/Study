@@ -113,9 +113,7 @@ input::placeholder {
 }
 
 .button:hover {
-    /*background-color: #99CCFF;*/
     color: #0396FF;
-    /*background-image: linear-gradient(135deg, #ABDCFF 10%, #0396FF 100%);*/
 }
 
 .button:first-child {

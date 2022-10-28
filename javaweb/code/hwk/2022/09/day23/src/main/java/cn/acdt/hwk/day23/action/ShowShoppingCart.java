@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import static java.lang.Thread.sleep;
 
 /**
  * 显示购物车商品
