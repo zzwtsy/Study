@@ -6,16 +6,11 @@
 <head>
     <title>登录页面</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/login.css">
     <style>
         .login {
             width: 400px !important;
             height: 445px !important;
-        }
-
-        input {
-            width: 250px;
-            height: 50px;
-            border-radius: 35px;
         }
     </style>
     <script>
@@ -49,11 +44,13 @@
         <label class="z-index99">
             <input type="password" name="userpwd" id="userpwd" placeholder="用户密码">
         </label>
-        <div class="z-index99 button-box">
-            <a href="register.jsp">
-                <button class="button" type="button" value="注册">注册</button>
+        <div class="button-box">
+            <a class="z-index99 add-shop-cart-btn" href="register.jsp">
+                <button class="z-index99 button" type="button" value="注册">注册</button>
             </a>
-            <button class="button" type="submit" value="登录" onclick="return check()">登录</button>
+            <div class="z-index99 add-shop-cart-btn">
+                <button class="z-index99 button" type="submit" value="登录" onclick="return check()">登录</button>
+            </div>
         </div>
         <div class="circle-blue"></div>
     </form>

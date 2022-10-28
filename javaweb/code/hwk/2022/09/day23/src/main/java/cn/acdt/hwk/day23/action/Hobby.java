@@ -54,28 +54,35 @@ public class Hobby extends HttpServlet {
                         "\n" +
                         "<head>\n" +
                         "    <link rel=\"stylesheet\" href=\"./css/style.css\">\n" +
+                        "    <link rel=\"stylesheet\" href=\"./css/ShowShoppingCart.css\">\n" +
+                        "    <link rel=\"stylesheet\" href=\"./css/welcome.css\">\n" +
                         "    <style>\n" +
                         "        .button {\n" +
                         "            width: 90%;\n" +
                         "        }\n" +
+                        "        .add-shop-cart-btn {\n" +
+                        "            margin: 20px auto 0 auto;\n" +
+                        "        }" +
+                        "        a {\n" +
+                        "            color: #fff;\n" +
+                        "        }\n" +
+                        "        a:hover {\n" +
+                        "           color: #0066cc;\n" +
+                        "        }" +
                         "    </style>\n" +
                         "</head>\n" +
                         "<div class=\"login\">\n" +
-                        "    <div class=\"circle-orange\"></div>\n" +
                         "    <form class=\"z-index99\">\n" +
                         "        <h3>您添加了" + num + "件商品</h3><br>\n" +
-                        "        <div class=\"z-index99 button-box\">\n" +
-                        "            <a href=\"Shopping\">\n" +
-                        "                <button class=\"button\" type=\"button\">继续购物</button>\n" +
-                        "            </a>\n" +
-                        "            <a href=\"ShowShoppingCart\">\n" +
-                        "                <button class=\"button\" type=\"button\">查看购物车</button>\n" +
-                        "            </a>\n" +
-                        "            <a href=\"Logout\">\n" +
-                        "                <button class=\"button\" type=\"button\">退出</button>\n" +
-                        "            </a>\n" +
+                        "        <div class=\"add-shop-cart-btn\">\n" +
+                        "            <a class=\"z-index99\" href=\"UpdateCounter\">继续购物</a>" +
                         "        </div>\n" +
-                        "        <div class=\"circle-blue\"></div>\n" +
+                        "        <div class=\"add-shop-cart-btn\">\n" +
+                        "            <a class=\"z-index99\" href=\"ShowShoppingCart\">查看购物车</a>" +
+                        "        </div>\n" +
+                        "        <div class=\"add-shop-cart-btn\">\n" +
+                        "            <a class=\"z-index99\" href=\"Logout\">退出</a>" +
+                        "        </div>\n" +
                         "</div>\n" +
                         "\n" +
                         "</html>");

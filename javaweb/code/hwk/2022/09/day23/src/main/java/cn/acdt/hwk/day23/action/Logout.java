@@ -24,7 +24,7 @@ public class Logout extends HttpServlet {
             writer.println("正在退出，3秒后返回登陆页面");
             HttpSession session = request.getSession();
             session.invalidate();
-            response.setHeader("Refresh", "3;URL=login");
+            response.setHeader("Refresh", "3;URL=LoginSvl");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

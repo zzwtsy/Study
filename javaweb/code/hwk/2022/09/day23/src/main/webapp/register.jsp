@@ -3,11 +3,13 @@
 <head>
     <title>注册页面</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/login.css">
     <style>
         .login {
             width: 400px !important;
             height: 445px !important;
         }
+
         input {
             width: 250px;
             height: 50px;
@@ -49,11 +51,13 @@
             <br>
             <input type="password" name="rpassword2" id="rpassword2" placeholder="再次输入密码">
         </label>
-        <div class="z-index99 button-box">
-            <a href="login.jsp">
-                <button class="button" type="button" value="登录">登录</button>
+        <div class="button-box">
+            <a class="z-index99 add-shop-cart-btn" href="login.jsp">
+                <button class="z-index99 button" type="button" value="注册">登录</button>
             </a>
-            <button class="button" type="submit" value="注册" onclick="return check()">注册</button>
+            <div class="z-index99 add-shop-cart-btn">
+                <button class="z-index99 button" type="submit" value="登录" onclick="return check()">注册</button>
+            </div>
         </div>
         <div class="circle-blue"></div>
     </form>
