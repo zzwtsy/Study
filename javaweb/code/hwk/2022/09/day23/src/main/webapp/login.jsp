@@ -6,6 +6,18 @@
 <head>
     <title>登录页面</title>
     <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .login {
+            width: 400px !important;
+            height: 445px !important;
+        }
+
+        input {
+            width: 250px;
+            height: 50px;
+            border-radius: 35px;
+        }
+    </style>
     <script>
         let tmp = "${message}";
         if ("*用户名或密码错误*".localeCompare(tmp)) {
@@ -27,7 +39,7 @@
 </head>
 <body>
 <div class="content">
-    <form class="login" action="${pageContext.request.contextPath}/login" method="post">
+    <form class="login" action="${pageContext.request.contextPath}/LoginSvl" method="post">
         <div class="circle-orange"></div>
         <h2 class="z-index99">登录页面</h2>
         <span class="z-index99" style="color:red">${message}</span>

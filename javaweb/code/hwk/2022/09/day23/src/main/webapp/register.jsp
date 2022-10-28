@@ -3,6 +3,17 @@
 <head>
     <title>注册页面</title>
     <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .login {
+            width: 400px !important;
+            height: 445px !important;
+        }
+        input {
+            width: 250px;
+            height: 50px;
+            border-radius: 35px;
+        }
+    </style>
     <script type="text/javascript">
         function check() {
             let name = document.getElementById("rusername").value;
@@ -33,7 +44,9 @@
         <h2 class="z-index99">注册页面</h2>
         <label class="z-index99">
             <input type="text" name="rusername" id="rusername" placeholder="请输入用户名">
+            <br>
             <input type="password" name="rpassword1" id="rpassword1" placeholder="请输入密码">
+            <br>
             <input type="password" name="rpassword2" id="rpassword2" placeholder="再次输入密码">
         </label>
         <div class="z-index99 button-box">
