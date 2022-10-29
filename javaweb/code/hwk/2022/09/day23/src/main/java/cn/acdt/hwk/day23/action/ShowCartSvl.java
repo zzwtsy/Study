@@ -15,8 +15,8 @@ import java.util.ArrayList;
  * @author zzwtsy
  * @date 2022-10-22
  */
-@WebServlet("/ShowShoppingCart")
-public class ShowShoppingCart extends HttpServlet {
+@WebServlet("/ShowCartSvl")
+public class ShowCartSvl extends HttpServlet {
     @Override
     @SuppressWarnings("unchecked")
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -30,7 +30,7 @@ public class ShowShoppingCart extends HttpServlet {
                 "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
                 "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
                 "    <link rel=\"stylesheet\" href=\"./css/style.css\">\n" +
-                "    <link rel=\"stylesheet\" href=\"./css/ShowShoppingCart.css\">\n" +
+                "    <link rel=\"stylesheet\" href=\"./css/ShowCartSvl.css\">\n" +
                 "    <link rel=\"stylesheet\" href=\"./css/welcome.css\">\n" +
                 "    <link rel=\"stylesheet\" href=\"https://at.alicdn.com/t/c/font_3735743_gi1bux4iwbg.css\">\n" +
                 "    <link href=\"https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.1/css/bootstrap.css\" type=\"text/css\"\n" +
@@ -45,7 +45,8 @@ public class ShowShoppingCart extends HttpServlet {
                 "<body>\n" +
                 "<div class=\"login\">\n" +
                 "    <form class=\"z-index99\" method=\"post\">\n" +
-                "        <div class=\"row row-cols-4\">\n");
+                "    <div class=\"container\">\n" +
+                "        <div class=\"row\">\n");
         for (String o : carts) {
             writer.println("<div class=\"z-index99 login small-box goods-cart col\">");
             writer.println("<label class=\"z-index99\">");
@@ -70,12 +71,13 @@ public class ShowShoppingCart extends HttpServlet {
         }
         writer.println("</div>\n" +
                 "        <div class=\"add-shop-cart-btn\">\n" +
-                "            <a class=\"z-index99\" href=\"UpdateCounter\">继续购物</a>" +
+                "            <a class=\"z-index99\" href=\"UpdateCounterSvl\">继续购物</a>" +
                 "        </div>\n" +
                 "        <div class=\"add-shop-cart-btn\">\n" +
-                "            <a class=\"z-index99\" href=\"Logout\">退出</a>" +
+                "            <a class=\"z-index99\" href=\"LogoutSvl\">退出</a>" +
                 "        </div>\n" +
                 "    </form>\n" +
+                "    </div>\n" +
                 "</div>\n" +
                 "</body>\n" +
                 "</html>");

@@ -12,7 +12,7 @@ import javax.servlet.annotation.*;
  * @author 孟繁兴
  */
 @WebServlet("/LoginSvl")
-public class Login extends HttpServlet {
+public class LoginSvl extends HttpServlet {
 
     @Override
     public void init() {

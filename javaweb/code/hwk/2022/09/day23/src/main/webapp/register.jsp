@@ -41,7 +41,7 @@
 </head>
 <body>
 <div class="content">
-    <form class="login" action="${pageContext.request.contextPath}/register" method="post">
+    <form class="login" action="${pageContext.request.contextPath}/RegisterSvl" method="post">
         <div class="circle-orange"></div>
         <h2 class="z-index99">注册页面</h2>
         <label class="z-index99">

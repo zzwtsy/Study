@@ -14,8 +14,8 @@ import java.io.IOException;
  * @author zzwtsy
  * @date 2022-10-27
  */
-@WebServlet("/UpdateCounter")
-public class UpdateCounter extends HttpServlet {
+@WebServlet("/UpdateCounterSvl")
+public class UpdateCounterSvl extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
         try {

@@ -1,5 +1,5 @@
-<%--@elvariable id="count" type="cn.acdt.hwk.day23.action.Login.count"--%>
-<%--@elvariable id="name" type="cn.acdt.hwk.day23.action.Login"--%>
+<%--@elvariable id="count" type="cn.acdt.hwk.day23.action.LoginSvl.count"--%>
+<%--@elvariable id="name" type="cn.acdt.hwk.day23.action.LoginSvl"--%>
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
@@ -26,7 +26,7 @@
 <body>
 <div class="login">
     <span class="z-index99">当前页面访问量：${count}</span>
-    <form class="z-index99" method="post" action="${pageContext.request.contextPath}/hobby">
+    <form class="z-index99" method="post" action="${pageContext.request.contextPath}/CartStatusSvl">
         <div class="row">
             <div class="z-index99 login small-box goods-cart col">
                 <label class="z-index99">

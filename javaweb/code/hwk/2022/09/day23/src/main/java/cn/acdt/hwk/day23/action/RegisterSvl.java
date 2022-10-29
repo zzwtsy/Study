@@ -12,8 +12,8 @@ import java.io.IOException;
 /**
  * @author zzwtsy
  */
-@WebServlet(urlPatterns = "/register")
-public class Register extends HttpServlet {
+@WebServlet(urlPatterns = "/RegisterSvl")
+public class RegisterSvl extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.getRequestDispatcher("register.jsp").forward(request, response);

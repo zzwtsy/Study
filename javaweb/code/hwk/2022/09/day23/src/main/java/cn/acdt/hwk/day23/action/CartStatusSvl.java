@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * @author zzwtsy
+ * @author 孟繁兴
  */
-@WebServlet(urlPatterns = "/hobby")
-public class Hobby extends HttpServlet {
+@WebServlet(urlPatterns = "/CartStatusSvl")
+public class CartStatusSvl extends HttpServlet {
     @Override
     @SuppressWarnings("unchecked")
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -54,7 +54,7 @@ public class Hobby extends HttpServlet {
                         "\n" +
                         "<head>\n" +
                         "    <link rel=\"stylesheet\" href=\"./css/style.css\">\n" +
-                        "    <link rel=\"stylesheet\" href=\"./css/ShowShoppingCart.css\">\n" +
+                        "    <link rel=\"stylesheet\" href=\"./css/ShowCartSvl.css\">\n" +
                         "    <link rel=\"stylesheet\" href=\"./css/welcome.css\">\n" +
                         "    <style>\n" +
                         "        .button {\n" +
@@ -75,13 +75,13 @@ public class Hobby extends HttpServlet {
                         "    <form class=\"z-index99\">\n" +
                         "        <h3>您添加了" + num + "件商品</h3><br>\n" +
                         "        <div class=\"add-shop-cart-btn\">\n" +
-                        "            <a class=\"z-index99\" href=\"UpdateCounter\">继续购物</a>" +
+                        "            <a class=\"z-index99\" href=\"UpdateCounterSvl\">继续购物</a>" +
                         "        </div>\n" +
                         "        <div class=\"add-shop-cart-btn\">\n" +
-                        "            <a class=\"z-index99\" href=\"ShowShoppingCart\">查看购物车</a>" +
+                        "            <a class=\"z-index99\" href=\"ShowCartSvl\">查看购物车</a>" +
                         "        </div>\n" +
                         "        <div class=\"add-shop-cart-btn\">\n" +
-                        "            <a class=\"z-index99\" href=\"Logout\">退出</a>" +
+                        "            <a class=\"z-index99\" href=\"LogoutSvl\">退出</a>" +
                         "        </div>\n" +
                         "</div>\n" +
                         "\n" +

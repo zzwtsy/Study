@@ -14,8 +14,8 @@ import java.io.PrintWriter;
  * @author zzwtsy
  * @date 2022-10-27
  */
-@WebServlet("/Logout")
-public class Logout extends HttpServlet {
+@WebServlet("/LogoutSvl")
+public class LogoutSvl extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
         response.setContentType("text/html;charset=UTF-8");
