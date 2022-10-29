@@ -14,17 +14,12 @@
           rel="stylesheet"/>
     <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" type="text/css"
           rel="stylesheet"/>
-    <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/js/all.js"
-            type="application/javascript"></script>
-    <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.js"
-            type="application/javascript"></script>
-    <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.1/js/bootstrap.js"
-            type="application/javascript"></script>
     <title>Document</title>
 </head>
 
 <body>
 <div class="login">
+    <span class="z-index99" id="welcome"></span>
     <span class="z-index99">当前页面访问量：${count}</span>
     <form class="z-index99" method="post" action="${pageContext.request.contextPath}/CartStatusSvl">
         <div class="row">
@@ -74,5 +69,14 @@
         </div>
     </form>
 </div>
+<script>
+    let tempUserName = ${name};
+    if (tempUserName != null) {
+        // let span =
+        document.getElementById('welcome').innerText = '欢迎' + tempUserName;
+        // let content = document.createTextNode('欢迎' + tempUserName);
+        // span.appendChild(content);
+    }
+</script>
 </body>
 </html>

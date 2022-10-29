@@ -1,5 +1,8 @@
 package cn.acdt.hwk.day23.action;
 
+import cn.acdt.hwk.day23.tools.UpdateCounter;
+
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -18,7 +21,9 @@ public class WelcomeSvl extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        ServletContext servletContext = this.getServletContext();
+        new UpdateCounter().updateCounter(servletContext);
         request.getRequestDispatcher("welcome.jsp").forward(request, response);
     }
 }

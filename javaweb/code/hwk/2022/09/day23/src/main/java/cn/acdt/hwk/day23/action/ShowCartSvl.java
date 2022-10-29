@@ -71,7 +71,7 @@ public class ShowCartSvl extends HttpServlet {
         }
         writer.println("</div>\n" +
                 "        <div class=\"add-shop-cart-btn\">\n" +
-                "            <a class=\"z-index99\" href=\"UpdateCounterSvl\">继续购物</a>" +
+                "            <a class=\"z-index99\" href=\"WelcomeSvl\">继续购物</a>" +
                 "        </div>\n" +
                 "        <div class=\"add-shop-cart-btn\">\n" +
                 "            <a class=\"z-index99\" href=\"LogoutSvl\">退出</a>" +

@@ -1,6 +1,7 @@
 package cn.acdt.hwk.day23.action;
 
 import cn.acdt.hwk.day23.tools.Config;
+import cn.acdt.hwk.day23.tools.UpdateCounter;
 
 import java.io.*;
 import javax.servlet.ServletContext;
@@ -34,17 +35,7 @@ public class LoginSvl extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("name", name);
             ServletContext servletContext = this.getServletContext();
-            //计数器
-            int count;
-            if (servletContext.getAttribute("count") == null) {
-                //表示第一次用户登录进来，这时还没有创建count属性，创建此属性，并将其置为1
-                servletContext.setAttribute("count", 1);
-            } else {
-                count = (Integer) servletContext.getAttribute("count");
-                count++;
-                //重新更新count属性中的数据
-                servletContext.setAttribute("count", count);
-            }
+            new UpdateCounter().updateCounter(servletContext);
             Cookie cookie = new Cookie("myLogin", name);
             //cookie默认保存10分钟（600秒）
             cookie.setMaxAge(600);
