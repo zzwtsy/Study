@@ -22,6 +22,5 @@ public class UpdateCounter extends HttpServlet {
             //重新更新count属性中的数据
             servletContext.setAttribute("count", count);
         }
-        System.out.println("计数器：" + servletContext.getAttribute("count"));
     }
 }
