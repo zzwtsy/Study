@@ -24,6 +24,10 @@ public class WelcomeSvl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         ServletContext servletContext = this.getServletContext();
         new UpdateCounter().updateCounter(servletContext);
+        HttpSession session = request.getSession();
+        if (session.getAttribute("name") == null) {
+            session.setAttribute("name", "false");
+        }
         request.getRequestDispatcher("welcome.jsp").forward(request, response);
     }
 }
