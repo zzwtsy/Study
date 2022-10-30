@@ -19,12 +19,12 @@ public class LogoutSvl extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
         response.setContentType("text/html;charset=UTF-8");
-        try {
-            PrintWriter writer = response.getWriter();
+        try (PrintWriter writer = response.getWriter()) {
             writer.println("正在退出，3秒后返回登陆页面");
             HttpSession session = request.getSession();
             session.invalidate();
             response.setHeader("Refresh", "3;URL=LoginSvl");
+            writer.flush();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

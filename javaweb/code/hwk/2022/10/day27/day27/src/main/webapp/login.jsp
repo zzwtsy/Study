@@ -4,14 +4,12 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/boltcss/bolt.css">
     <title>Insert title here</title>
 </head>
 <body>
 <form action="${pageContext.request.contextPath}/AutoLoginSvl" method="post">
     <table align="center">
-        <tr>
-            <td height=200></td>
-        </tr>
         <tr>
             <td>用户名：</td>
             <td>
@@ -40,7 +38,7 @@
             </td>
         </tr>
         <tr>
-            <td colspan="2" align="center">
+            <td colspan="2" style="text-align: center">
                 <input type="submit" value="登录">
             </td>
         </tr>
