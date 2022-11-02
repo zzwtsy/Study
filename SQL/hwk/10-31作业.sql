@@ -9,10 +9,17 @@
 -- 附加数据sgms
 --1、student 表
 --1)统计所有学生人数 
-	SELECT COUNT(*) AS '学生人数' FROM Student
+	SELECT 
+		COUNT(*) AS '学生人数' 
+	FROM 
+		Student
 --2)按照calssid 分组 统计各班级人数
-	SELECT classID AS '班级ID', COUNT(*) AS '学生人数' FROM Student
-	GROUP BY classID
+	SELECT 
+		classID AS '班级ID', COUNT(*) AS '学生人数' 
+	FROM 
+		Student
+	GROUP BY 
+		classID
 --3)按照calssid 分组 统计各班女生级人数
 	SELECT classID AS '班级ID', COUNT(*) AS '女学生人数' FROM Student
 	WHERE sex = '女'
@@ -79,8 +86,11 @@ END AS '职称',
 --3）使用with cube统计
 	--1）统计各个职称教师的人数
 	SELECT
-	CASE WHEN ( GROUPING( 职称 ) = 1 ) THEN '人数小计'
-		ELSE 职称 
+	CASE 
+		WHEN 
+			( GROUPING( 职称 ) = 1 ) THEN '人数小计'
+		ELSE 
+			职称 
 	END AS '职称',
 		COUNT ( * ) AS '人数' 
 	FROM
