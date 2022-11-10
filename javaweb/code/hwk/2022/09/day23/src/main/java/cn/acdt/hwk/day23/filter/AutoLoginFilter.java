@@ -1,4 +1,4 @@
-package cn.acdt.hwk.day23.action;
+package cn.acdt.hwk.day23.filter;
 
 import javax.servlet.*;
 import javax.servlet.annotation.*;
@@ -10,18 +10,30 @@ import java.io.IOException;
  * @author zzwtsy
  * @date 2022/11/10
  */
-@WebFilter(filterName = "AutoLoginFilter")
+@WebFilter(filterName = "/AutoLoginFilter",
+        dispatcherTypes = {DispatcherType.REQUEST},
+        urlPatterns = "/*",
+        initParams = {
+                @WebInitParam(name = "encoding", value = "UTF-8")
+        })
 public class AutoLoginFilter implements Filter {
+    String encoding = null;
+
     @Override
     public void init(FilterConfig config) throws ServletException {
+        this.encoding = config.getInitParameter(encoding);
     }
 
     @Override
     public void destroy() {
+        this.encoding = null;
     }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
+        if (encoding != null) {
+            response.setCharacterEncoding(this.encoding);
+        }
         chain.doFilter(request, response);
     }
 }
