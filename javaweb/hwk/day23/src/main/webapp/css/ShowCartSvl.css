@@ -1,0 +1,14 @@
+a {
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    line-height: 65px;
+    font-size: 20px;
+}
+
+.add-shop-cart-btn::before {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
