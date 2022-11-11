@@ -17,17 +17,10 @@ import java.io.IOException;
  */
 @WebServlet("/WelcomeSvl")
 public class WelcomeSvl extends HttpServlet {
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         ServletContext servletContext = this.getServletContext();
         new UpdateCounter().updateCounter(servletContext);
-        HttpSession session = request.getSession();
-        if (session.getAttribute("name") == null) {
-            session.setAttribute("name", "false");
-        }
         request.getRequestDispatcher("welcome.jsp").forward(request, response);
     }
 }

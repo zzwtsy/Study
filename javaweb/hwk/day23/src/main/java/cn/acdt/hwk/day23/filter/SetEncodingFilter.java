@@ -5,22 +5,22 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 
 /**
- * 自动登录过滤器
+ * 设置编码过滤器
  *
  * @author zzwtsy
  * @date 2022/11/10
  */
-@WebFilter(filterName = "/SetEncoding",
-        dispatcherTypes = {DispatcherType.REQUEST},
+@WebFilter(filterName = "/SetEncodingFilter",
+        dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD},
         urlPatterns = "/*",
         initParams = {
                 @WebInitParam(name = "encoding", value = "UTF-8")
         })
-public class SetEncoding implements Filter {
+public class SetEncodingFilter implements Filter {
     String encoding = null;
 
     @Override
-    public void init(FilterConfig config) throws ServletException {
+    public void init(FilterConfig config) {
         this.encoding = config.getInitParameter(encoding);
     }
 

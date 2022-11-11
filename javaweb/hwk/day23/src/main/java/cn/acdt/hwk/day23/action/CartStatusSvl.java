@@ -114,7 +114,7 @@ public class CartStatusSvl extends HttpServlet {
                         "<div class=\"login\">\n" +
                         "    <form class=\"z-index99\">\n" +
                         "        <h3>您添加了" + num + "件商品</h3>\n" +
-                        "        <h3>当前购物车已添加件" + carts.size() + "商品</h3>" +
+                        "        <h3>当前购物车已添加" + carts.size() + "件商品</h3>" +
                         "        <div class=\"add-shop-cart-btn\">\n" +
                         "            <a class=\"z-index99\" href=\"WelcomeSvl\">继续购物</a>" +
                         "        </div>\n" +

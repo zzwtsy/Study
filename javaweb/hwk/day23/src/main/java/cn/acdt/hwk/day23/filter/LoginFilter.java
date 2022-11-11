@@ -1,5 +1,7 @@
 package cn.acdt.hwk.day23.filter;
 
+import cn.acdt.hwk.day23.action.WelcomeSvl;
+
 import javax.servlet.*;
 import javax.servlet.annotation.*;
 import javax.servlet.http.HttpServletRequest;
@@ -14,8 +16,7 @@ import java.io.IOException;
  * @date 2022/11/10
  */
 @WebFilter(filterName = "LoginFilter",
-        urlPatterns = {"/WelcomeSvl", "/welcome.jsp"},
-        dispatcherTypes = {DispatcherType.REQUEST}
+        urlPatterns = {"/WelcomeSvl", "/welcome.jsp"}
 )
 
 public class LoginFilter implements Filter {
@@ -35,8 +36,10 @@ public class LoginFilter implements Filter {
         HttpSession session = req.getSession();
         if (session.getAttribute("name") == null) {
             req.setAttribute("logErr", "请登录");
-            req.getRequestDispatcher("test.jsp").forward(req, resp);
+            req.getRequestDispatcher("login.jsp").forward(req, resp);
             return;
+        } else {
+            new WelcomeSvl();
         }
         chain.doFilter(request, response);
     }
