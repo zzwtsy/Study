@@ -13,7 +13,7 @@ import java.util.Date;
  */
 @WebListener
 public class Listener implements ServletContextListener {
-    Date date = new Date(System.currentTimeMillis());
+    Date date = new Date();
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     String nowTime = simpleDateFormat.format(date.getTime());
 
