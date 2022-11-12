@@ -1,5 +1,7 @@
 package cn.acdt.hwk.day23.listener;
 
+import lombok.extern.log4j.Log4j2;
+
 import javax.servlet.*;
 import javax.servlet.annotation.*;
 import java.text.SimpleDateFormat;
@@ -11,6 +13,7 @@ import java.util.Date;
  * @author zzwtsy
  * @date 2022/11/12
  */
+@Log4j2
 @WebListener
 public class Listener implements ServletContextListener {
     Date date = new Date();
@@ -24,12 +27,12 @@ public class Listener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         /* This method is called when the servlet context is initialized(when the Web application is deployed). */
-        System.out.println("ServletContext Initialized:" + nowTime);
+        log.info("ServletContext Initialized[" + nowTime + "]");
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         /* This method is called when the servlet Context is undeployed or Application Server shuts down. */
-        System.out.println("ServletContext Destroyed" + nowTime);
+        log.info("ServletContext Destroyed[" + nowTime + "]");
     }
 }

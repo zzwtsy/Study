@@ -1,6 +1,7 @@
 package cn.acdt.hwk.day23.action;
 
 import cn.acdt.hwk.day23.tools.Config;
+import lombok.extern.log4j.Log4j2;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,12 +13,13 @@ import java.io.IOException;
 /**
  * @author zzwtsy
  */
+@Log4j2
 @WebServlet(urlPatterns = "/RegisterSvl")
 public class RegisterSvl extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.getRequestDispatcher("register.jsp").forward(request, response);
-        System.out.println("doGet" + getClass().getSimpleName());
+        log.info("跳转注册界面");
     }
 
     @Override
@@ -27,6 +29,6 @@ public class RegisterSvl extends HttpServlet {
         Config.INSTANCE.setName(name);
         Config.INSTANCE.setPassword(password);
         request.getRequestDispatcher("login.jsp").forward(request, response);
-        System.out.println("doPost-" + getClass().getSimpleName());
+        log.info("用户注册账户");
     }
 }

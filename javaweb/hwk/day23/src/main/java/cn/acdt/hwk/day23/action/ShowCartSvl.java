@@ -1,5 +1,7 @@
 package cn.acdt.hwk.day23.action;
 
+import lombok.extern.log4j.Log4j2;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
  * @author zzwtsy
  * @date 2022-10-22
  */
+@Log4j2
 @WebServlet("/ShowCartSvl")
 public class ShowCartSvl extends HttpServlet {
     @Override
@@ -83,7 +86,7 @@ public class ShowCartSvl extends HttpServlet {
                     </html>""");
             writer.flush();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            log.error(e.getMessage());
         }
     }
 }

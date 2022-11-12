@@ -1,5 +1,7 @@
 package cn.acdt.hwk.day23.action;
 
+import lombok.extern.log4j.Log4j2;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
@@ -10,48 +12,50 @@ import java.util.Collections;
 /**
  * @author 孟繁兴
  */
+@Log4j2
 @WebServlet(urlPatterns = "/CartStatusSvl")
 public class CartStatusSvl extends HttpServlet {
-    String str1 = "<!DOCTYPE html>\n" +
-            "<html lang=\"en\">\n" +
-            "\n" +
-            "<head>\n" +
-            "    <meta charset=\"UTF-8\">\n" +
-            "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
-            "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
-            "    <script src=\"https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js\"\n" +
-            "        type=\"application/javascript\"></script>\n" +
-            "    <title>Document</title>\n" +
-            "    <style>\n" +
-            "        body {\n" +
-            "            padding: 0;\n" +
-            "            margin: 0;\n" +
-            "            color: #0066cc;\n" +
-            "            background-color: #99CCFF !important;" +
-            "            display: flex;\n" +
-            "            height: 100vh;\n" +
-            "            justify-content: center;\n" +
-            "            align-items: center;\n" +
-            "            font-size: 24px;\n" +
-            "        }\n" +
-            "    </style>\n" +
-            "</head>\n" +
-            "\n" +
-            "<body>\n" +
-            "    <span id=\"typed\"></span>\n" +
-            "    <script type=\"text/javascript\">\n" +
-            "        var options = {\n" +
-            "            strings: [\n" +
-            "                \"您还没有登录，请先登录，3秒后返回登录页面\"\n" +
-            "            ],\n" +
-            "            typeSpeed: 80,   //打印速度\n" +
-            "            loop: false,      //是否循环\n" +
-            "        };\n" +
-            "        var typed = new Typed('#typed', options);\n" +
-            "    </script>\n" +
-            "</body>\n" +
-            "\n" +
-            "</html>";
+    String str1 = """
+            <!DOCTYPE html>
+            <html lang="en">
+
+            <head>
+                <meta charset="UTF-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js"
+                    type="application/javascript"></script>
+                <title>Document</title>
+                <style>
+                    body {
+                        padding: 0;
+                        margin: 0;
+                        color: #0066cc;
+                        background-color: #99CCFF !important;            display: flex;
+                        height: 100vh;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 24px;
+                    }
+                </style>
+            </head>
+
+            <body>
+                <span id="typed"></span>
+                <script type="text/javascript">
+                    var options = {
+                        strings: [
+                            "您还没有登录，请先登录，3秒后返回登录页面"
+                        ],
+                        typeSpeed: 80,   //打印速度
+                        loop: false,      //是否循环
+                    };
+                    var typed = new Typed('#typed', options);
+                </script>
+            </body>
+
+            </html>""";
+
     @Override
     @SuppressWarnings("unchecked")
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -65,9 +69,11 @@ public class CartStatusSvl extends HttpServlet {
                     break;
                 }
             }
+            log.info("用户已登陆");
         }
         String user = (String) session.getAttribute("name");
         if (user == null) {
+            log.info("用户未登陆");
             response.setContentType("text/html;charset=UTF-8");
             PrintWriter out = response.getWriter();
             out.println(str1);
@@ -129,7 +135,7 @@ public class CartStatusSvl extends HttpServlet {
                         "</html>");
                 writer.flush();
             } catch (IOException e) {
-                System.err.println(e.getMessage());
+                log.error(e.getMessage());
             }
         }
     }

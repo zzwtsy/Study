@@ -1,6 +1,7 @@
 package cn.acdt.hwk.day23.action;
 
 import cn.acdt.hwk.day23.tools.UpdateCounter;
+import lombok.extern.log4j.Log4j2;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -15,6 +16,7 @@ import java.io.IOException;
  * @author zzwtsy
  * @date 2022/10/27
  */
+@Log4j2
 @WebServlet("/WelcomeSvl")
 public class WelcomeSvl extends HttpServlet {
     @Override
@@ -22,5 +24,6 @@ public class WelcomeSvl extends HttpServlet {
         ServletContext servletContext = this.getServletContext();
         new UpdateCounter().updateCounter(servletContext);
         request.getRequestDispatcher("welcome.jsp").forward(request, response);
+        log.info("跳转欢迎界面");
     }
 }
