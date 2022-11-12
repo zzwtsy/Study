@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 
@@ -20,34 +19,35 @@ import java.util.ArrayList;
 public class ShowCartSvl extends HttpServlet {
     @Override
     @SuppressWarnings("unchecked")
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
-        request.setCharacterEncoding("UTF-8");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
         ArrayList<String> carts = (ArrayList<String>) request.getSession().getAttribute("carts");
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter writer = response.getWriter()) {
-            writer.println("<html>\n" +
-                    "<head>\n" +
-                    "    <meta charset=\"UTF-8\">\n" +
-                    "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
-                    "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
-                    "    <link rel=\"stylesheet\" href=\"./css/style.css\">\n" +
-                    "    <link rel=\"stylesheet\" href=\"./css/ShowCartSvl.css\">\n" +
-                    "    <link rel=\"stylesheet\" href=\"./css/welcome.css\">\n" +
-                    "    <link rel=\"stylesheet\" href=\"https://at.alicdn.com/t/c/font_3735743_gi1bux4iwbg.css\">\n" +
-                    "    <link href=\"https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.1/css/bootstrap.css\" type=\"text/css\"\n" +
-                    "          rel=\"stylesheet\"/>\n" +
-                    "    <link href=\"https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css\" type=\"text/css\"\n" +
-                    "          rel=\"stylesheet\"/>\n" +
-                    "    <script src=\"https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/js/all.js\"\n" +
-                    "            type=\"application/javascript\"></script>\n" +
-                    "    <title>Document</title>\n" +
-                    "</head>\n" +
-                    "\n" +
-                    "<body>\n" +
-                    "<div class=\"login\">\n" +
-                    "    <form class=\"z-index99\" method=\"post\">\n" +
-                    "    <div class=\"container\">\n" +
-                    "        <div class=\"row\">\n");
+            writer.println("""
+                    <html>
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <link rel="stylesheet" href="./css/style.css">
+                        <link rel="stylesheet" href="./css/ShowCartSvl.css">
+                        <link rel="stylesheet" href="./css/welcome.css">
+                        <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_3735743_gi1bux4iwbg.css">
+                        <link href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.1/css/bootstrap.css" type="text/css"
+                              rel="stylesheet"/>
+                        <link href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" type="text/css"
+                              rel="stylesheet"/>
+                        <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/js/all.js"
+                                type="application/javascript"></script>
+                        <title>Document</title>
+                    </head>
+
+                    <body>
+                    <div class="login">
+                        <form class="z-index99" method="post">
+                        <div class="container">
+                            <div class="row">
+                    """);
             for (String o : carts) {
                 writer.println("<div class=\"z-index99 login small-box goods-cart col\">");
                 writer.println("<label class=\"z-index99\">");
@@ -70,18 +70,17 @@ public class ShowCartSvl extends HttpServlet {
                 writer.println(o);
                 writer.println("</label></div>");
             }
-            writer.println("</div>\n" +
-                    "        <div class=\"add-shop-cart-btn\">\n" +
-                    "            <a class=\"z-index99\" href=\"WelcomeSvl\">继续购物</a>" +
-                    "        </div>\n" +
-                    "        <div class=\"add-shop-cart-btn\">\n" +
-                    "            <a class=\"z-index99\" href=\"LogoutSvl\">退出</a>" +
-                    "        </div>\n" +
-                    "    </form>\n" +
-                    "    </div>\n" +
-                    "</div>\n" +
-                    "</body>\n" +
-                    "</html>");
+            writer.println("""
+                    </div>
+                            <div class="add-shop-cart-btn">
+                                <a class="z-index99" href="WelcomeSvl">继续购物</a>        </div>
+                            <div class="add-shop-cart-btn">
+                                <a class="z-index99" href="LogoutSvl">退出</a>        </div>
+                        </form>
+                        </div>
+                    </div>
+                    </body>
+                    </html>""");
             writer.flush();
         } catch (IOException e) {
             throw new RuntimeException(e);

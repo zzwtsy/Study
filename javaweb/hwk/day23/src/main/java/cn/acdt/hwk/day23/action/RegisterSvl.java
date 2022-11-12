@@ -22,7 +22,6 @@ public class RegisterSvl extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("rusername");
         String password = request.getParameter("rpassword1");
         Config.INSTANCE.setName(name);
