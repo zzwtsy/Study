@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServlet;
  * @date 2022/10/29
  */
 public class UpdateCounter extends HttpServlet {
+    /**
+     * 更新计数器
+     *
+     * @param servletContext servletContext
+     */
     public void updateCounter(ServletContext servletContext) {
         //计数器
         int count;
