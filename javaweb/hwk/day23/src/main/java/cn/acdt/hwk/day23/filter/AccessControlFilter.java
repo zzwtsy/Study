@@ -72,7 +72,7 @@ public class AccessControlFilter implements Filter {
                             <script type="text/javascript">
                                 var options = {
                                     strings: [
-                                        "你还没有登陆，3秒后返回登录页面"
+                                        "您还没有登陆，3秒后返回登录页面"
                                     ],
                                     typeSpeed: 80,   //打印速度
                                     loop: false,      //是否循环
