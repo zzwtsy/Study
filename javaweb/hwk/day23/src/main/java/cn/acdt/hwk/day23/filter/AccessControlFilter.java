@@ -21,7 +21,7 @@ import java.io.PrintWriter;
 @WebFilter(filterName = "LoginFilter",
         urlPatterns = {"/WelcomeSvl", "/LogoutSvl", "/ShowCartSvl",
                 "/WelcomeSvl", "/CartStatusSvl", "/welcome.jsp",
-                "/register.jsp", "/welcome.jsp"}
+                "/welcome.jsp"}
 )
 
 public class AccessControlFilter implements Filter {

@@ -7,8 +7,8 @@ import lombok.extern.log4j.Log4j2;
 import java.io.*;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-import javax.servlet.annotation.*;
 
 /**
  * @author 孟繁兴
@@ -30,6 +30,7 @@ public class LoginSvl extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("username");
         String password = request.getParameter("userpwd");
         if (name.equals(Config.INSTANCE.getName()) && password.equals(Config.INSTANCE.getPassword())) {

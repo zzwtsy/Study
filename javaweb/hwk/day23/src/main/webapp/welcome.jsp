@@ -20,9 +20,6 @@
 <body>
 <div class="login">
     <span class="z-index99" id="welcome"></span>
-    <span class="z-index99">
-        <a id="login" href="login.jsp"></a>
-    </span>
     <span class="z-index99">当前页面访问量：${count}</span>
     <form class="z-index99" method="post" action="${pageContext.request.contextPath}/CartStatusSvl">
         <div class="row">
@@ -73,11 +70,9 @@
     </form>
 </div>
 <script>
-    let tempUserName = ${name};
+    let tempUserName = "${name}";
     if (tempUserName) {
-        document.getElementById('welcome').innerText = '欢迎' + ${name};
-    } else {
-        document.getElementById('login').innerText = '请登录';
+        document.getElementById('welcome').innerText = '欢迎' + "${name}";
     }
 </script>
 </body>

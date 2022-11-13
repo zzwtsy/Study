@@ -1,5 +1,7 @@
 package cn.acdt.hwk.day23.filter;
 
+import lombok.extern.log4j.Log4j2;
+
 import javax.servlet.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
@@ -10,6 +12,7 @@ import java.io.IOException;
  * @author zzwtsy
  * @date 2022/11/10
  */
+@Log4j2
 @WebFilter(filterName = "/SetEncodingFilter",
         dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD},
         urlPatterns = "/*",
@@ -21,7 +24,7 @@ public class SetEncodingFilter implements Filter {
 
     @Override
     public void init(FilterConfig config) {
-        this.encoding = config.getInitParameter(encoding);
+        this.encoding = config.getInitParameter("encoding");
     }
 
     @Override
@@ -33,6 +36,7 @@ public class SetEncodingFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
         if (encoding != null) {
             response.setCharacterEncoding(this.encoding);
+            log.info("Set Encoding");
         }
         chain.doFilter(request, response);
     }

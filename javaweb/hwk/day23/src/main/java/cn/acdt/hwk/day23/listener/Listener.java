@@ -2,10 +2,11 @@ package cn.acdt.hwk.day23.listener;
 
 import lombok.extern.log4j.Log4j2;
 
-import javax.servlet.*;
-import javax.servlet.annotation.*;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import javax.servlet.ServletContextListener;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.annotation.WebListener;
+
+import static cn.acdt.hwk.day23.tools.GetNowTime.getNowTime;
 
 /**
  * 侦听器
@@ -16,9 +17,6 @@ import java.util.Date;
 @Log4j2
 @WebListener
 public class Listener implements ServletContextListener {
-    Date date = new Date();
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    String nowTime = simpleDateFormat.format(date.getTime());
 
 
     public Listener() {
@@ -26,11 +24,11 @@ public class Listener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        log.info("ServletContext Initialized[" + nowTime + "]");
+        log.info("ServletContext Initialized[" + getNowTime() + "]");
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        log.info("ServletContext Destroyed[" + nowTime + "]");
+        log.info("ServletContext Destroyed[" + getNowTime() + "]");
     }
 }
