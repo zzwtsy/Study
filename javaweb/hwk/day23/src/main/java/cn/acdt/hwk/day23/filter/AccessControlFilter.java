@@ -19,7 +19,9 @@ import java.io.PrintWriter;
  */
 @Log4j2
 @WebFilter(filterName = "LoginFilter",
-        urlPatterns = {"/WelcomeSvl", "/LogoutSvl", "/ShowCartSvl", "/WelcomeSvl", "/CartStatusSvl", "/welcome.jsp", "/register.jsp", "/welcome.jsp"}
+        urlPatterns = {"/WelcomeSvl", "/LogoutSvl", "/ShowCartSvl",
+                "/WelcomeSvl", "/CartStatusSvl", "/welcome.jsp",
+                "/register.jsp", "/welcome.jsp"}
 )
 
 public class AccessControlFilter implements Filter {
@@ -33,7 +35,7 @@ public class AccessControlFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
-//        过滤没有登录的情况
+        //过滤没有登录的情况
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
         HttpSession session = req.getSession();

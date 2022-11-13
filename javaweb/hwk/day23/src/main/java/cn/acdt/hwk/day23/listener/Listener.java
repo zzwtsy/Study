@@ -26,13 +26,11 @@ public class Listener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        /* This method is called when the servlet context is initialized(when the Web application is deployed). */
         log.info("ServletContext Initialized[" + nowTime + "]");
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        /* This method is called when the servlet Context is undeployed or Application Server shuts down. */
         log.info("ServletContext Destroyed[" + nowTime + "]");
     }
 }
