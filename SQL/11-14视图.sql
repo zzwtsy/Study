@@ -41,3 +41,34 @@ SELECT * FROM V_GradeAVG
 WHERE 平均分>85
 
 -- 修改：如果是聚合函数不可修改
+
+--创建视图V_GradeAVG2，包含学生姓名、各科成绩的平均分等信息，平均分大于85
+CREATE VIEW V_GradeAVG2 ( 姓名,平均分 ) 
+AS SELECT
+studentName,
+AVG ( Grade.score ) 
+FROM
+	Student
+	JOIN Grade ON Student.studentID= Grade.studentID 
+GROUP BY
+	Student.studentName
+HAVING AVG ( Grade.score ) >85
+-- 查看视图
+sp_help V_Girls
+sp_helptext V_Girls --显示视图定义脚本（加密不显示）
+sp_depends V_Girls -- 显示视图依赖对象
+-- 修改视图
+ALTER VIEW V_GradeAVG ( 姓名,平均分 ) 
+WITH ENCRYPTION
+AS SELECT
+studentName,
+AVG ( Grade.score ) 
+FROM
+	Student
+	JOIN Grade ON Student.studentID= Grade.studentID 
+GROUP BY
+	Student.studentName
+HAVING AVG ( Grade.score ) > 85
+
+-- 删除视图
+DROP VIEW V_GradeAVG
