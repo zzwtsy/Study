@@ -15,11 +15,8 @@ WHERE nation<>'汉'
 SELECT * FROM Student
 WHERE studentName LIKE '李%'
 --6、查询1987年出生的学生详细信息。(between and 范围查询)
---方法一
 SELECT * FROM Student
 WHERE birthday BETWEEN '1987-1-1' AND '1987-12-31'
---方法二
-WHERE YEAR(birthday)=1987
 --成绩在80到90之间的信息
 --方法一
 SELECT * FROM Student
