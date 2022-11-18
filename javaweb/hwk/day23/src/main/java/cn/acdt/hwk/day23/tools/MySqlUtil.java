@@ -90,7 +90,7 @@ public class MySqlUtil {
     }
 
     /**
-     * 执行更新
+     * 执行增删改查
      *
      * @param sql    sql语句
      * @param object sql参数
