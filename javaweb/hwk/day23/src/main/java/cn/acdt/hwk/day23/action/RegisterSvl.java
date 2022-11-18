@@ -1,6 +1,6 @@
 package cn.acdt.hwk.day23.action;
 
-import cn.acdt.hwk.day23.tools.MySqlUtil;
+import cn.acdt.hwk.day23.database.DataBaseHelper;
 import lombok.extern.log4j.Log4j2;
 
 import javax.servlet.ServletException;
@@ -34,7 +34,7 @@ public class RegisterSvl extends HttpServlet {
         String sql = "INSERT INTO `user` SET username = ?, password = ?";
         Object[] params = new Object[]{name, password};
         try {
-            if (MySqlUtil.executeUpdate(sql, params) > 0) {
+            if (DataBaseHelper.executeUpdate(sql, params) > 0) {
                 registerStatic = "注册成功";
             } else {
                 registerStatic = "注册失败";

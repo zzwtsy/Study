@@ -1,6 +1,6 @@
 package cn.acdt.hwk.day23.action;
 
-import cn.acdt.hwk.day23.tools.MySqlUtil;
+import cn.acdt.hwk.day23.database.DataBaseHelper;
 import cn.acdt.hwk.day23.tools.UpdateCounter;
 import lombok.extern.log4j.Log4j2;
 
@@ -41,7 +41,7 @@ public class LoginSvl extends HttpServlet {
         String sql = "select * from user where username=? and password=?";
         Object[] params = new Object[]{name, password};
         try {
-            Map<Object, Object> map = MySqlUtil.executeQuery(sql, params);
+            Map<Object, Object> map = DataBaseHelper.executeQuery(sql, params);
             sqlUsername = (String) map.get("username");
             sqlPassword = (String) map.get("password");
             sqlIdent = (String) map.get("ident");

@@ -1,4 +1,4 @@
-package cn.acdt.hwk.day23.tools;
+package cn.acdt.hwk.day23.database;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -15,7 +15,7 @@ import static cn.acdt.hwk.day23.tools.MyStatic.*;
  * @date 2022/11/18
  */
 @Log4j2
-public class MySqlUtil {
+public class DataBaseHelper {
     private static Connection conn = null;
     private static PreparedStatement pstmt = null;
     private static ResultSet rs = null;
