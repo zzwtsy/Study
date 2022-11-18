@@ -18,6 +18,8 @@ import java.sql.SQLException;
 @Log4j2
 @WebServlet(urlPatterns = "/RegisterSvl")
 public class RegisterSvl extends HttpServlet {
+    private String registerStatic = "";
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.getRequestDispatcher("register.jsp").forward(request, response);
@@ -33,14 +35,22 @@ public class RegisterSvl extends HttpServlet {
         Object[] params = new Object[]{name, password};
         try {
             if (MySqlUtil.executeUpdate(sql, params) > 0) {
-                session.setAttribute("registerStatic", "注册成功");
+                registerStatic = "注册成功";
             } else {
-                session.setAttribute("registerStatic", "注册失败");
+                registerStatic = "注册失败";
             }
+            session.setAttribute("registerStatic", "注册失败");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         request.getRequestDispatcher("register.jsp").forward(request, response);
         log.info("用户注册账户");
+    }
+
+    @Override
+    public void destroy() {
+        if (!"".equals(registerStatic)) {
+            registerStatic = "";
+        }
     }
 }
