@@ -1,10 +1,12 @@
 package cn.acdt.hwk.day23.action;
 
-import cn.acdt.hwk.day23.tools.Config;
+import cn.acdt.hwk.day23.tools.MySqlUtil;
 import cn.acdt.hwk.day23.tools.UpdateCounter;
 import lombok.extern.log4j.Log4j2;
 
-import java.io.*;
+import java.io.*;;
+import java.sql.SQLException;
+import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,12 +32,30 @@ public class LoginSvl extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
+        String identValue = "0";
+        String sqlUsername;
+        String sqlPassword;
+        String sqlIdent;
         String name = request.getParameter("username");
         String password = request.getParameter("userpwd");
-        if (name.equals(Config.INSTANCE.getName()) && password.equals(Config.INSTANCE.getPassword())) {
+        String sql = "select * from user where username=? and password=?";
+        Object[] params = new Object[]{name, password};
+        try {
+            Map<Object, Object> map = MySqlUtil.executeQuery(sql, params);
+            sqlUsername = (String) map.get("username");
+            sqlPassword = (String) map.get("password");
+            sqlIdent = (String) map.get("ident");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        if (name.equals(sqlUsername) && password.equals(sqlPassword)) {
             HttpSession session = request.getSession();
             session.setAttribute("name", name);
+            if (identValue.equals(sqlIdent)) {
+                session.setAttribute("ident", "普通用户");
+            } else {
+                session.setAttribute("ident", "用户管理员");
+            }
             ServletContext servletContext = this.getServletContext();
             new UpdateCounter().updateCounter(servletContext);
             Cookie cookie = new Cookie("myLogin", name);

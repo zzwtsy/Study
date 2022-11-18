@@ -1,5 +1,6 @@
+<%--@elvariable id="ident" type="cn.acdt.hwk.day23.action.LoginSvl.ident"--%>
 <%--@elvariable id="count" type="cn.acdt.hwk.day23.action.LoginSvl.count"--%>
-<%--@elvariable id="name" type="cn.acdt.hwk.day23.action.LoginSvl"--%>
+<%--@elvariable id="name" type="cn.acdt.hwk.day23.action.LoginSvl.name"--%>
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
@@ -19,7 +20,8 @@
 
 <body>
 <div class="login">
-    <span class="z-index99" id="welcome"></span>
+    <span class="z-index99" id="welcome">${name}</span>
+    <span class="z-index99" id="group">${ident}</span>
     <span class="z-index99">当前页面访问量：${count}</span>
     <form class="z-index99" method="post" action="${pageContext.request.contextPath}/CartStatusSvl">
         <div class="row">
@@ -70,10 +72,10 @@
     </form>
 </div>
 <script>
-    let tempUserName = "${name}";
-    if (tempUserName) {
-        document.getElementById('welcome').innerText = '欢迎' + "${name}";
-    }
+    <%--let tempUserName = "${name}";--%>
+    <%--if (tempUserName) {--%>
+    <%--    document.getElementById('welcome').innerText = '欢迎' + "${name}";--%>
+    <%--}--%>
 </script>
 </body>
 </html>

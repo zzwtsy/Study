@@ -36,6 +36,7 @@ public class SetEncodingFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
         if (encoding != null) {
             response.setCharacterEncoding(this.encoding);
+            request.setCharacterEncoding(this.encoding);
             log.info("Set Encoding");
         }
         chain.doFilter(request, response);

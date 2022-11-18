@@ -1,3 +1,4 @@
+<%--@elvariable id="registerStatic" type="cn.acdt.hwk.day23.action.RegisterSvl.registerStatic"--%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -44,15 +45,19 @@
     <form class="login" action="${pageContext.request.contextPath}/RegisterSvl" method="post">
         <div class="circle-orange"></div>
         <h2 class="z-index99">注册页面</h2>
+        <span class="z-index99">${registerStatic}</span>
+        <br>
         <label class="z-index99">
             <input type="text" name="rusername" id="rusername" placeholder="请输入用户名">
-            <br>
+        </label>
+        <label class="z-index99">
             <input type="password" name="rpassword1" id="rpassword1" placeholder="请输入密码">
-            <br>
+        </label>
+        <label class="z-index99">
             <input type="password" name="rpassword2" id="rpassword2" placeholder="再次输入密码">
         </label>
         <div class="button-box">
-            <a class="z-index99 add-shop-cart-btn" href="login.jsp">
+            <a class="z-index99 add-shop-cart-btn" href="${pageContext.request.contextPath}/LoginSvl">
                 <button class="z-index99 button" type="button" value="注册">登录</button>
             </a>
             <div class="z-index99 add-shop-cart-btn">

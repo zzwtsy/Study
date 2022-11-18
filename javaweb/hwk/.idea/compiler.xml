@@ -10,5 +10,8 @@
         <module name="day23" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="JDBCLoginDemo" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

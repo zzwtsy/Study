@@ -2,6 +2,7 @@ package cn.acdt.hwk.day23.action;
 
 import lombok.extern.log4j.Log4j2;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
@@ -93,50 +94,15 @@ public class CartStatusSvl extends HttpServlet {
                 num = goods.length;
                 Collections.addAll(carts, goods);
             }
-            request.getSession().setAttribute("carts", carts);
-            response.setContentType("text/html;charset=UTF-8");
-            try (PrintWriter writer = response.getWriter()) {
-                writer.println("<html>\n" +
-                        "\n" +
-                        "<head>\n" +
-                        "    <link rel=\"stylesheet\" href=\"./css/style.css\">\n" +
-                        "    <link rel=\"stylesheet\" href=\"./css/ShowCartSvl.css\">\n" +
-                        "    <link rel=\"stylesheet\" href=\"./css/welcome.css\">\n" +
-                        "    <style>\n" +
-                        "        .button {\n" +
-                        "            width: 90%;\n" +
-                        "        }\n" +
-                        "        .add-shop-cart-btn {\n" +
-                        "            margin: 20px auto 0 auto;\n" +
-                        "        }" +
-                        "        a {\n" +
-                        "            color: #fff;\n" +
-                        "        }\n" +
-                        "        a:hover {\n" +
-                        "           color: #0066cc;\n" +
-                        "        }" +
-                        "    </style>\n" +
-                        "</head>\n" +
-                        "<div class=\"login\">\n" +
-                        "    <form class=\"z-index99\">\n" +
-                        "        <h3>您添加了" + num + "件商品</h3>\n" +
-                        "        <h3>当前购物车已添加" + carts.size() + "件商品</h3>" +
-                        "        <div class=\"add-shop-cart-btn\">\n" +
-                        "            <a class=\"z-index99\" href=\"WelcomeSvl\">继续购物</a>" +
-                        "        </div>\n" +
-                        "        <div class=\"add-shop-cart-btn\">\n" +
-                        "            <a class=\"z-index99\" href=\"ShowCartSvl\">查看购物车</a>" +
-                        "        </div>\n" +
-                        "        <div class=\"add-shop-cart-btn\">\n" +
-                        "            <a class=\"z-index99\" href=\"LogoutSvl\">退出</a>" +
-                        "        </div>\n" +
-                        "</div>\n" +
-                        "\n" +
-                        "</html>");
-                writer.flush();
-            } catch (IOException e) {
-                log.error(e.getMessage());
+            session.setAttribute("addGoodsNum", num);
+            session.setAttribute("addGoodsTotal", carts.size());
+            session.setAttribute("carts", carts);
+            try {
+                request.getRequestDispatcher("cart-status.jsp").forward(request, response);
+            } catch (ServletException e) {
+                throw new RuntimeException(e);
             }
+
         }
     }
 }

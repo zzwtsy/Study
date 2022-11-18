@@ -45,7 +45,7 @@
             <input type="password" name="userpwd" id="userpwd" placeholder="用户密码">
         </label>
         <div class="button-box">
-            <a class="z-index99 add-shop-cart-btn" href="register.jsp">
+            <a class="z-index99 add-shop-cart-btn" href="${pageContext.request.contextPath}/RegisterSvl">
                 <button class="z-index99 button" type="button" value="注册">注册</button>
             </a>
             <div class="z-index99 add-shop-cart-btn">
