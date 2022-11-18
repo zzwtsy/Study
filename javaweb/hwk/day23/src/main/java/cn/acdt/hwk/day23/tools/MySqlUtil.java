@@ -73,7 +73,7 @@ public class MySqlUtil {
         }
         try {
             rs = pstmt.executeQuery();
-            while (rs.next()) {
+            if (rs.next()) {
                 map.put("id", rs.getInt("id"));
                 map.put("username", rs.getString("username"));
                 map.put("password", rs.getString("password"));

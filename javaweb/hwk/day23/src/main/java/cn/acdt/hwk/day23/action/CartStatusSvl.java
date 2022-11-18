@@ -16,7 +16,7 @@ import java.util.Collections;
 @Log4j2
 @WebServlet(urlPatterns = "/CartStatusSvl")
 public class CartStatusSvl extends HttpServlet {
-    String str1 = """
+    final String str1 = """
             <!DOCTYPE html>
             <html lang="en">
 

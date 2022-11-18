@@ -4,7 +4,7 @@ import cn.acdt.hwk.day23.tools.MySqlUtil;
 import cn.acdt.hwk.day23.tools.UpdateCounter;
 import lombok.extern.log4j.Log4j2;
 
-import java.io.*;;
+import java.io.*;
 import java.sql.SQLException;
 import java.util.Map;
 import javax.servlet.ServletContext;

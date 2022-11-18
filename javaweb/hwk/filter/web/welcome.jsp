@@ -1,3 +1,4 @@
+<%--@elvariable id="username" type="cn.acdt.hwk.day23"--%>
 <%--
   Created by IntelliJ IDEA.
   User: meng
@@ -12,5 +13,6 @@
 </head>
 <body>
 欢迎${username}
+
 </body>
 </html>
