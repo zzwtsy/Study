@@ -39,7 +39,7 @@ public class RegisterSvl extends HttpServlet {
             } else {
                 registerStatic = "注册失败";
             }
-            session.setAttribute("registerStatic", "注册失败");
+            session.setAttribute("registerStatic", registerStatic);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

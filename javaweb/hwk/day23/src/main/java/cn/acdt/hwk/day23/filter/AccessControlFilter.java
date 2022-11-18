@@ -89,7 +89,6 @@ public class AccessControlFilter implements Filter {
             } catch (IOException e) {
                 log.error(e.getMessage());
             }
-            req.getRequestDispatcher("login.jsp").forward(req, resp);
             return;
         } else {
             new WelcomeSvl();
