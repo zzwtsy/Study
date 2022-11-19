@@ -32,9 +32,8 @@ public class RegisterSvl extends HttpServlet {
         String name = request.getParameter("rusername");
         String password = request.getParameter("rpassword1");
         String sql = "INSERT INTO `user` SET username = ?, password = ?";
-        Object[] params = new Object[]{name, password};
         try {
-            if (DataBaseHelper.executeUpdate(sql, params) > 0) {
+            if (DataBaseHelper.executeUpdate(sql, name, password) > 0) {
                 registerStatic = "注册成功";
             } else {
                 registerStatic = "注册失败";

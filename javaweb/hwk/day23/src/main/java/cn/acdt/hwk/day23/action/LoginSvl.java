@@ -33,24 +33,20 @@ public class LoginSvl extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Map<Object, Object>> list;
         String identValue = "0";
-        String sqlUsername;
-        String sqlPassword;
         String sqlIdent;
         String name = request.getParameter("username");
         String password = request.getParameter("userpwd");
         String sql = "select * from user where username=? and password=?";
-        Object[] params = new Object[]{name, password};
         try {
-            List<Map<Object, Object>> list = DataBaseHelper.executeQuery(sql, params);
-            Map<Object, Object> map = list.get(0);
-            sqlUsername = (String) map.get("username");
-            sqlPassword = (String) map.get("password");
-            sqlIdent = (String) map.get("ident");
+            list = DataBaseHelper.executeQuery(sql, name, password);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        if (name.equals(sqlUsername) && password.equals(sqlPassword)) {
+        if (list.size() > 0) {
+            Map<Object, Object> map = list.get(0);
+            sqlIdent = (String) map.get("ident");
             HttpSession session = request.getSession();
             session.setAttribute("name", name);
             if (identValue.equals(sqlIdent)) {
