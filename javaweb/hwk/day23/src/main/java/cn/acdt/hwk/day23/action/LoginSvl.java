@@ -6,6 +6,7 @@ import lombok.extern.log4j.Log4j2;
 
 import java.io.*;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -41,7 +42,8 @@ public class LoginSvl extends HttpServlet {
         String sql = "select * from user where username=? and password=?";
         Object[] params = new Object[]{name, password};
         try {
-            Map<Object, Object> map = DataBaseHelper.executeQuery(sql, params);
+            List<Map<Object, Object>> list = DataBaseHelper.executeQuery(sql, params);
+            Map<Object, Object> map = list.get(0);
             sqlUsername = (String) map.get("username");
             sqlPassword = (String) map.get("password");
             sqlIdent = (String) map.get("ident");

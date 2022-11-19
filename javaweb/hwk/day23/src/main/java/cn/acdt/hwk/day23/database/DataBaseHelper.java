@@ -1,20 +1,16 @@
 package cn.acdt.hwk.day23.database;
 
-import lombok.extern.log4j.Log4j2;
-
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import static cn.acdt.hwk.day23.tools.MyStatic.*;
+import static cn.acdt.hwk.day23.tools.DataBaseStatic.*;
 
 /**
- * DbUtils
- *
  * @author 孟繁兴
- * @date 2022/11/18
  */
-@Log4j2
 public class DataBaseHelper {
     private static Connection conn = null;
     private static PreparedStatement pstmt = null;
@@ -23,9 +19,8 @@ public class DataBaseHelper {
     static {
         try {
             Class.forName(DRIVER_CLASS_NAME);
-            log.info("数据库连接成功");
         } catch (ClassNotFoundException e) {
-            log.error("数据库连接失败");
+            System.err.println("数据库连接失败");
             e.printStackTrace();
         }
     }
@@ -35,12 +30,8 @@ public class DataBaseHelper {
      *
      * @return connection
      */
-    private static Connection getConnection() {
-        try {
-            conn = DriverManager.getConnection(MYSQL_CONNECT_URL, MYSQL_USER_NAME, MYSQL_USER_PASSWORD);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    private static Connection getConnection() throws SQLException {
+        conn = DriverManager.getConnection(MYSQL_CONNECT_URL, MYSQL_USER_NAME, MYSQL_USER_PASSWORD);
         return conn;
     }
 
@@ -49,12 +40,8 @@ public class DataBaseHelper {
      *
      * @return Statement
      */
-    private static PreparedStatement getStatement(String sql) {
-        try {
-            pstmt = getConnection().prepareStatement(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    private static PreparedStatement getStatement(String sql) throws SQLException {
+        pstmt = getConnection().prepareStatement(sql);
         return pstmt;
     }
 
@@ -63,45 +50,39 @@ public class DataBaseHelper {
      *
      * @param sql    sql语句
      * @param object sql参数
-     * @return 查询结果
+     * @return {@code List<Map<Object, Object>>}
+     * @throws SQLException sqlexception异常
      */
-    public static Map<Object, Object> executeQuery(String sql, Object... object) throws SQLException {
-        Map<Object, Object> map = new HashMap<>();
+    public static List<Map<Object, Object>> executeQuery(String sql, Object... object) throws SQLException {
+        List<Map<Object, Object>> listFromResultSet = null;
         pstmt = getStatement(sql);
         for (int i = 0; i < object.length; i++) {
             pstmt.setObject(i + 1, object[i]);
         }
         try {
             rs = pstmt.executeQuery();
-            if (rs.next()) {
-                map.put("id", rs.getInt("id"));
-                map.put("username", rs.getString("username"));
-                map.put("password", rs.getString("password"));
-                map.put("ident", rs.getString("ident"));
-                map.put("telephone", rs.getString("telephone"));
-                map.put("address", rs.getString("address"));
-            }
+            listFromResultSet = getListFromResultSet(rs);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             close();
         }
-        return map;
+        return listFromResultSet;
     }
 
     /**
-     * 执行增删改查
+     * 执行增删改操作
      *
      * @param sql    sql语句
      * @param object sql参数
      * @return int 1:执行成功 0：执行失败
      */
     public static int executeUpdate(String sql, Object... object) throws SQLException {
+        int executeStatic = 0;
         pstmt = getStatement(sql);
         for (int i = 0; i < object.length; i++) {
             pstmt.setObject(i + 1, object[i]);
         }
-        int executeStatic = 0;
         try {
             int i = pstmt.executeUpdate();
             if (i > 0) {
@@ -115,12 +96,36 @@ public class DataBaseHelper {
         return executeStatic;
     }
 
+    /**
+     * 从ResultSet获取列表
+     *
+     * @param rs ResultSet
+     * @return {@code List<Map<Object, Object>>}
+     * @throws SQLException sqlexception异常
+     */
+    private static List<Map<Object, Object>> getListFromResultSet(ResultSet rs) throws SQLException {
+        List<Map<Object, Object>> list = new ArrayList<>();
+        ResultSetMetaData rsMetaData = rs.getMetaData();
+        while (rs.next()) {
+            Map<Object, Object> map = new HashMap<>();
+            for (int i = 1; i <= rsMetaData.getColumnCount(); i++) {
+                String column = rsMetaData.getColumnLabel(i);
+                Object object = rs.getObject(column);
+                if (object != null) {
+                    map.put(column, object);
+                }
+            }
+            list.add(map);
+        }
+        return list;
+    }
+
     private static void close() {
         if (pstmt != null) {
             try {
                 pstmt.close();
             } catch (SQLException e) {
-                log.error("PreparedStatement关闭失败");
+                System.err.println("PreparedStatement关闭失败");
                 e.printStackTrace();
             }
         }
@@ -128,7 +133,7 @@ public class DataBaseHelper {
             try {
                 conn.close();
             } catch (SQLException e) {
-                log.error("Connection关闭失败");
+                System.err.println("Connection关闭失败");
                 e.printStackTrace();
             }
         }
@@ -136,7 +141,7 @@ public class DataBaseHelper {
             try {
                 rs.close();
             } catch (SQLException e) {
-                log.error("ResultSet关闭失败");
+                System.err.println("ResultSet关闭失败");
                 e.printStackTrace();
             }
         }
