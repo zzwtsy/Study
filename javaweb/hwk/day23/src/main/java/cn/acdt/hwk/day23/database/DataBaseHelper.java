@@ -1,12 +1,20 @@
 package cn.acdt.hwk.day23.database;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static cn.acdt.hwk.day23.tools.DataBaseStatic.*;
+import static cn.acdt.hwk.day23.tools.DataBaseStatic.DRIVER_CLASS_NAME;
+import static cn.acdt.hwk.day23.tools.DataBaseStatic.MYSQL_CONNECT_URL;
+import static cn.acdt.hwk.day23.tools.DataBaseStatic.MYSQL_USER_NAME;
+import static cn.acdt.hwk.day23.tools.DataBaseStatic.MYSQL_USER_PASSWORD;
 
 /**
  * @author 孟繁兴
