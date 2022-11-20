@@ -12,15 +12,11 @@ import static cn.acdt.hwk.day23.tools.GetNowTime.getNowTime;
  * 侦听器
  *
  * @author zzwtsy
- * @date 2022/11/12
+ * @since 2022/11/12
  */
 @Log4j2
 @WebListener
 public class Listener implements ServletContextListener {
-
-
-    public Listener() {
-    }
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {

@@ -75,7 +75,8 @@ public class DataBaseHelper {
      *
      * @param sql    sql语句
      * @param object sql参数
-     * @return int 1:执行成功 0：执行失败
+     * @return int
+     * @throws SQLException sqlexception异常
      */
     public static int executeUpdate(String sql, Object... object) throws SQLException {
         int executeStatic = 0;

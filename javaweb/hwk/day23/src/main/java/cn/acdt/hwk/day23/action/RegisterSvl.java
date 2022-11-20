@@ -13,12 +13,18 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 /**
+ * 注册svl
+ *
  * @author zzwtsy
+ * @since 2022/11/20
  */
 @Log4j2
 @WebServlet(urlPatterns = "/RegisterSvl")
 public class RegisterSvl extends HttpServlet {
-    private String registerStatic = "";
+    /**
+     * 注册状态
+     */
+    private String registerStatus = "";
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -34,11 +40,11 @@ public class RegisterSvl extends HttpServlet {
         String sql = "INSERT INTO `user` SET username = ?, password = ?";
         try {
             if (DataBaseHelper.executeUpdate(sql, name, password) > 0) {
-                registerStatic = "注册成功";
+                registerStatus = "注册成功";
             } else {
-                registerStatic = "注册失败";
+                registerStatus = "注册失败";
             }
-            session.setAttribute("registerStatic", registerStatic);
+            session.setAttribute("registerStatic", registerStatus);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -48,8 +54,8 @@ public class RegisterSvl extends HttpServlet {
 
     @Override
     public void destroy() {
-        if (!"".equals(registerStatic)) {
-            registerStatic = "";
+        if (!"".equals(registerStatus)) {
+            registerStatus = "";
         }
     }
 }

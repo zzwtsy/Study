@@ -7,13 +7,13 @@ import java.util.Date;
  * 获取当前时间
  *
  * @author 孟繁兴
- * @date 2022/11/13
+ * @since  2022/11/13
  */
 public class GetNowTime {
     /**
      * 获取当前时间
      *
-     * @return {@code String} 当前时间
+     * @return {@code String}
      */
     public static String getNowTime() {
         Date date = new Date();

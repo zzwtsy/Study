@@ -11,10 +11,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * 注销
+ * 注销svl
  *
  * @author zzwtsy
- * @date 2022-10-27
+ * @since 2022-10-27
  */
 @Log4j2
 @WebServlet("/LogoutSvl")
