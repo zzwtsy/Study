@@ -107,9 +107,10 @@ public class DataBaseHelper {
     private static List<Map<Object, Object>> getListFromResultSet(ResultSet rs) throws SQLException {
         List<Map<Object, Object>> list = new ArrayList<>();
         ResultSetMetaData rsMetaData = rs.getMetaData();
+        int columnCount = rsMetaData.getColumnCount();
         while (rs.next()) {
-            Map<Object, Object> map = new HashMap<>();
-            for (int i = 1; i <= rsMetaData.getColumnCount(); i++) {
+            Map<Object, Object> map = new HashMap<>(columnCount);
+            for (int i = 1; i <= columnCount; i++) {
                 String column = rsMetaData.getColumnLabel(i);
                 Object object = rs.getObject(column);
                 if (object != null) {
