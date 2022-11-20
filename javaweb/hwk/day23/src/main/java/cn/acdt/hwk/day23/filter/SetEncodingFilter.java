@@ -20,7 +20,10 @@ import java.io.IOException;
                 @WebInitParam(name = "encoding", value = "UTF-8")
         })
 public class SetEncodingFilter implements Filter {
-    String encoding = null;
+    /**
+     * 编码
+     */
+    private String encoding = null;
 
     @Override
     public void init(FilterConfig config) {
