@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.0/css/all.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <title>轮播图</title>
+    <style>
+        img {
+            height: 100vh;
+            width: 100vw;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo" class="carousel slide" data-ride="carousel">
+        <!-- 指示器 -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+        <!-- 轮播图 -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img id="pic1" src="https://tva2.sinaimg.cn/large/87c01ec7gy1frmmlso9rgj21hc0u0kjn.jpg">
+            </div>
+            <div class="carousel-item">
+                <img id="pic2" src="https://tva1.sinaimg.cn/large/87c01ec7gy1frmrxuzha8j21hc0u0gur.jpg">
+            </div>
+            <div class="carousel-item">
+                <img id="pic3" src="https://tva1.sinaimg.cn/large/87c01ec7gy1frmrr7y6u3j21hc0u0k0c.jpg">
+            </div>
+            <div class="carousel-item">
+                <img id="pic4" src="https://tva4.sinaimg.cn/large/0060lm7Tly1ftg6omusg9j31hc0u010h.jpg">
+            </div>
+        </div>
+        <!-- 左右切换按钮 -->
+        <a class="carousel-control-prev" href="#demo" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" role="button" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+</body>
+
+</html>

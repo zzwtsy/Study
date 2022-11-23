@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <title>Document</title>
+    <style type="text/css">
+        .row {
+            width: 100%;
+        }
+
+        .row:after {
+            clear: left;
+            content: '';
+            display: table;
+        }
+
+        [class^="col"] {
+            float: left;
+            background-color: #e0e0e0;
+        }
+
+        .col1 {
+            width: 25%;
+        }
+
+        .col2 {
+            width: 50%;
+        }
+
+        @media (max-width: 768px) {
+            .row {
+                width: 100%;
+            }
+
+            [class^="col"] {
+                float: none;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <header>页头</header>
+        </div>
+        <div class="row">
+            <nav class="col1">导航</nav>
+            <nav class="col2">主要内容</nav>
+            <aside class="col1">侧边栏</aside>
+        </div>
+        <div class="row">
+            <footer>尾页</footer>
+        </div>
+    </div>
+</body>
+
+</html>
