@@ -87,7 +87,7 @@ public class DataBaseHelper {
      * @throws SQLException sqlexception异常
      */
     public static int executeUpdate(String sql, Object... object) throws SQLException {
-        int executeStatic = 0;
+        int executeStatus = 0;
         pstmt = getStatement(sql);
         for (int i = 0; i < object.length; i++) {
             pstmt.setObject(i + 1, object[i]);
@@ -95,14 +95,14 @@ public class DataBaseHelper {
         try {
             int i = pstmt.executeUpdate();
             if (i > 0) {
-                executeStatic = 1;
+                executeStatus = 1;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             close();
         }
-        return executeStatic;
+        return executeStatus;
     }
 
     /**

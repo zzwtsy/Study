@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>拖拽</title>
     <style>
     #div1,
     #div2 {
@@ -49,7 +50,6 @@
         <p id="p5" draggable="true">5</p>
     </div>
     <div id="div2"></div>
-    <script src="../../../pun_js/jquery-3.6.1.min.js"></script>
     <script>
     document.ondragstart = function(event) {
         console.log(event.target.id);

@@ -24,10 +24,6 @@ import java.util.Map;
 @Log4j2
 @WebServlet(urlPatterns = "/RegisterSvl")
 public class RegisterSvl extends HttpServlet {
-    /**
-     * 注册状态
-     */
-    private String registerStatus = "";
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -47,6 +43,9 @@ public class RegisterSvl extends HttpServlet {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+        //注册状态
+        String registerStatus;
         //判断用户名是否已注册
         if (checkUserNameList.size() > 0) {
             registerStatus = "用户名已注册";
@@ -62,15 +61,12 @@ public class RegisterSvl extends HttpServlet {
                 throw new RuntimeException(e);
             }
         }
-        session.setAttribute("registerStatic", registerStatus);
+        session.setAttribute("registerStatus", registerStatus);
         request.getRequestDispatcher("register.jsp").forward(request, response);
         log.info("用户注册账户");
     }
 
     @Override
     public void destroy() {
-        if (!"".equals(registerStatus)) {
-            registerStatus = "";
-        }
     }
 }

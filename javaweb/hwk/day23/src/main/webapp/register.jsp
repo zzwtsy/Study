@@ -1,4 +1,4 @@
-<%--@elvariable id="registerStatic" type="cn.acdt.hwk.day23.action.RegisterSvl.registerStatic"--%>
+<%--@elvariable id="registerStatus" type="cn.acdt.hwk.day23.action.RegisterSvl.registerStatus"--%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -45,7 +45,7 @@
     <form class="login" action="${pageContext.request.contextPath}/RegisterSvl" method="post">
         <div class="circle-orange"></div>
         <h2 class="z-index99">注册页面</h2>
-        <span class="z-index99">${registerStatic}</span>
+        <span class="z-index99">${registerStatus}</span>
         <br>
         <label class="z-index99">
             <input type="text" name="rusername" id="rusername" placeholder="请输入用户名">
