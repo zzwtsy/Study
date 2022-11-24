@@ -25,16 +25,22 @@ public class LoginServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 代码编写处
-        User user = new User();
+        User user;
         HttpSession session = request.getSession();
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
-        new UserDao().getUserByName(userName);
         if (userName == null || userName.trim().equals("") || password == null || password.trim().equals("")) {
             request.getRequestDispatcher("/login.jsp").forward(request, response);
-        } else if (userName.equals(user.getUserName()) && password.equals(user.getPassword())) {
-            session.setAttribute("user", userName);
-            request.getRequestDispatcher("/users").forward(request, response);
+        } else {
+            user = new UserDao().getUserByName(userName);
+            String name = user.getUserName();
+            String pwdString = user.getPassword();
+            if (userName.equals(name) && password.equals(pwdString)) {
+                session.setAttribute("user", userName);
+                response.sendRedirect(request.getContextPath() + "/users");
+            } else {
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
+            }
         }
     }
 }

@@ -33,15 +33,15 @@ public class UserDao {
             pstmt.setString(1, userName);
             rs = pstmt.executeQuery();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         try {
-            user.setId(rs.getString("id"));
-            user.setUserName(rs.getString("userName"));
-            user.setPassword(rs.getString("password"));
+            if (rs.next()) {
+                user.setId(rs.getString("id"));
+                user.setUserName(rs.getString("userName"));
+                user.setPassword(rs.getString("password"));
+            }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return user;// 请修改代码
@@ -55,7 +55,6 @@ public class UserDao {
     public List<User> getAll() {
         // 代码编写处
         List<User> userList = new ArrayList<>();
-        User user = new User();
         Connection connection = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -64,38 +63,35 @@ public class UserDao {
         try {
             pstmt = connection.prepareStatement(sql);
             rs = pstmt.executeQuery();
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } finally {
-            if (connection != null) {
-                DBUtil.closeConnection(connection);
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-        }
-        try {
             while (rs.next()) {
+                User user = new User();
                 user.setId(rs.getString("id"));
                 user.setUserName(rs.getString("userName"));
                 user.setPassword(rs.getString("password"));
                 userList.add(user);
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } finally {
             if (rs != null) {
                 try {
                     rs.close();
                 } catch (SQLException e) {
-                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                DBUtil.closeConnection(connection);
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
