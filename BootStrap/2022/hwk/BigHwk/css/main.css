@@ -1,0 +1,14 @@
+.why-card {
+    height: 300px;
+    padding: 24px;
+}
+
+.office-card {
+    height: 520px;
+    padding: 24px;
+}
+
+.office-card-video {
+    height: 25vmin;
+    width: 41vmin;
+}
