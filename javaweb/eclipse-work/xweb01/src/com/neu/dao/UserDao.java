@@ -14,6 +14,10 @@ import com.neu.util.DBUtil;
  * 对应user表的持久层
  */
 public class UserDao {
+    Connection connection = null;
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+
     /**
      * 根据用户名查找用户一条记录
      * 
@@ -23,9 +27,6 @@ public class UserDao {
     public User getUserByName(String userName) {
         // 代码编写处
         User user = new User();
-        Connection connection = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
         connection = DBUtil.getConnection();
         String sql = "SELECT * FROM user WHERE userName=?";
         try {
@@ -43,6 +44,8 @@ public class UserDao {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            close();
         }
         return user;// 请修改代码
     }
@@ -55,9 +58,6 @@ public class UserDao {
     public List<User> getAll() {
         // 代码编写处
         List<User> userList = new ArrayList<>();
-        Connection connection = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
         connection = DBUtil.getConnection();
         String sql = "SELECT * FROM user";
         try {
@@ -73,31 +73,26 @@ public class UserDao {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (connection != null) {
-                DBUtil.closeConnection(connection);
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
+            close();
         }
-
         return userList;// 请修改代码
     }
 
+    private void close() {
+        if (rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (pstmt != null) {
+            try {
+                pstmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        DBUtil.closeConnection(connection);
+    }
 }

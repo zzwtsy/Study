@@ -10,7 +10,6 @@
 	href="css/bootstrap.min.css">
 </head>
 <body>
-
 	<div class="container">
 		<div class="row" style="margin-top: 40px">
 			<div class="col-md-8 col-md-offset-2 ">
@@ -33,12 +32,9 @@
 							</c:forEach>
 						</tbody>
 					</table>
-
 				</div>
 			</div>
-
 		</div>
-
 	</div>
 </body>
 </html>

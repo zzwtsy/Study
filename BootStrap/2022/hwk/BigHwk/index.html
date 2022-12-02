@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/bootstrap.light.min.css" rel="stylesheet" id="themeCss">
     <link href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.0/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/main.css">
+    <script src="./js/main.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.min.js"></script>
     <title>Deepin</title>
@@ -16,8 +17,10 @@
 
 <body>
     <!-- 导航栏 -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><img src="./img/deepin-logo.svg" alt="deepin-logo"></a>
+    <nav class="navbar navbar-expand-sm navbar-expand-md bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="./img/deepin-logo.svg" alt="deepin-logo">
+        </a>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -43,11 +46,16 @@
                     <a class="nav-link">关于</a>
                 </li>
             </ul>
+            <img id="changeTheme" src="./img/theme/sun.png" class="sun pr-3" onclick="changeTheme()">
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="搜索" aria-label="Search">
                 <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">搜索</button>
             </form>
         </div>
+        <!-- 折叠按钮 -->
+        <button type="button" class="navbar-toggler bar" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <i class="fa fa-bars fa-1x cp-c" aria-hidden="true"></i>
+        </button>
     </nav>
     <!-- banner -->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -60,8 +68,8 @@
         <!-- 图片 -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="./img/banner/202208161143306594_banner1920x780.jpg" class="d-block w-100" alt="...">
-                <div class="carousel-caption">
+                <img src="./img/banner/202208161143306594_banner1920x780.jpg" class="" alt="...">
+                <div class="carousel-caption d-none d-sm-block">
                     <h1>deepin 23 Preview</h1>
                     <h4>deepin是一款开箱即用的桌面操作系统发行版，美观易用且操作简单。
                         系统中预装了多款自研特色应用，既能满足您的日常工作，也能让您娱乐身心。
@@ -70,14 +78,14 @@
             </div>
             <div class="carousel-item">
                 <img src="./img/banner/202209201321552174_1920780.jpg" class="d-block w-100" alt="...">
-                <div class="carousel-caption">
+                <div class="carousel-caption d-none d-sm-block">
                     <h1>deepin 主题壁纸</h1>
                     <h4>不少小伙伴对deepin的主题壁纸钟爱有加，应大家所需，从设计大佬那搞来的福利，欢迎收藏分享。</h4>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="./img/banner/202210172148429620_官网banner1920x780psd.jpg" class="d-block w-100" alt="...">
-                <div class="carousel-caption">
+                <div class="carousel-caption d-none d-sm-block">
                     <h1>deepin 20.7.1</h1>
                     <h4>深度操作系统20.7.1积极响应社区用户反馈的需求，进一步提升用户体验；
                         增加NVIDIA驱动预装功能、 修复系统漏洞 、部分功能更新适用于700+机型，
@@ -87,7 +95,7 @@
             </div>
             <div class="carousel-item">
                 <img src="./img/banner/202211101009047483_官网banner1920x780.jpg" class="d-block w-100" alt="...">
-                <div class="carousel-caption">
+                <div class="carousel-caption d-none d-sm-block">
                     <h1>deepin V23 Alpha</h1>
                     <h4>深度操作系统 V23 Alpha是V23的阶段性版本。设计上，基于最新的“行云设计”理念，从UI
                         界面、交互体验上，为你呈现一方崭新视界；功能上，积极响应社区用户反馈的需求，开发并集成许多实用功能，
@@ -114,7 +122,7 @@
                 <h1>为什么选deepin?</h1>
                 <h4>漂亮的设计、贴心的人机交互、安全友好的社区环境让您感觉宾至如归。</h4>
             </div>
-            <div class="row row-cols-3 p-5">
+            <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 p-5">
                 <div class="card text-center why-card">
                     <img class="card-img-top m-auto" src="./img/why/开箱即用.svg" alt="Card image" style="width:80px">
                     <div class="card-body">
@@ -167,75 +175,130 @@
                     </div>
                 </div>
             </div>
-
         </div>
         <!-- 实用功能 -->
         <div class="p-3">
             <div class="text-center">
                 <h1>特色功能实用更高效</h1>
                 <h4> deepin根据用户使用习惯自研开发40余款应用，为用户提供了更高效、便捷的办公能力！ </h4>
-                <div class="row row-cols-2 p-5">
-                    <div class="card office-card">
-                        <img class="card-img-top" src="./img/office/自定义办公.png" alt="Card image" style="width:80px">
-                        <div class="card-body p-0">
-                            <h4 class="card-title">自由定义办公方式</h4>
-                            <p class="card-text">独一无二的桌面环境，多样化的办公方式，deepin为您带去新颖独特的使用感受，满足您个性化的使用需求！</p>
-                        </div>
-                        <div class="m-auto">
-                            <iframe class="rounded office-card-video"
-                                src="//player.bilibili.com/player.html?aid=586462207&bvid=BV1Sz4y1m7Ks&cid=292005234&page=1"
-                                scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true">
-                            </iframe>
-                        </div>
+            </div>
+            <div class="row row-cols-sm-1 row-cols-lg-2 p-5">
+                <div class="card office-card">
+                    <img class="card-img-top" src="./img/office/自定义办公.png" alt="Card image" style="width:80px">
+                    <div class="card-body p-0">
+                        <h4 class="card-title">自由定义办公方式</h4>
+                        <p class="card-text">独一无二的桌面环境，多样化的办公方式，deepin为您带去新颖独特的使用感受，满足您个性化的使用需求！</p>
                     </div>
-                    <div class="card office-card">
-                        <img class="card-img-top" src="./img/office/全局搜索.png" alt="Card image" style="width:80px">
-                        <div class="card-body p-0">
-                            <h4 class="card-title">全局搜索</h4>
-                            <p class="card-text">
-                                遗忘在角落的照片、视频、文件，贴心功能想您所想，搜您所需，一键直达。
-                            </p>
-                        </div>
-                        <div class="m-auto">
-                            <iframe class="rounded office-card-video"
-                                src="//player.bilibili.com/player.html?aid=293415218&bvid=BV1Tf4y177NX&cid=422302294&page=1"
-                                scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true">
-                            </iframe>
-                        </div>
+                    <div class="m-auto pt-2">
+                        <iframe class="rounded office-card-video"
+                            src="//player.bilibili.com/player.html?aid=586462207&bvid=BV1Sz4y1m7Ks&cid=292005234&page=1">
+                        </iframe>
                     </div>
-                    <div class="card office-card">
-                        <img class="card-img-top" src="./img/office/截图录屏.png" alt="Card image" style="width:80px">
-                        <div class="card-body p-0">
-                            <h4 class="card-title">截图录屏</h4>
-                            <p class="card-text">
-                                有价值的图文资料，急待分享的趣味画面，截图录屏助您无任何负担的随时捕捉。
-                            </p>
-                        </div>
-                        <div class="m-auto">
-                            <iframe class="rounded office-card-video"
-                                src="//player.bilibili.com/player.html?aid=545116635&bvid=BV1pi4y1A7AQ&cid=324565355&page=1"
-                                scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true">
-                            </iframe>
-                        </div>
+                </div>
+                <div class="card office-card">
+                    <img class="card-img-top" src="./img/office/全局搜索.png" alt="Card image" style="width:80px">
+                    <div class="card-body p-0">
+                        <h4 class="card-title">全局搜索</h4>
+                        <p class="card-text">
+                            遗忘在角落的照片、视频、文件，贴心功能想您所想，搜您所需，一键直达。
+                        </p>
                     </div>
-                    <div class="card office-card">
-                        <img class="card-img-top" src="./img/office/ocr.png" alt="Card image" style="width:80px">
-                        <div class="card-body p-0">
-                            <h4 class="card-title">OCR</h4>
-                            <p class="card-text">
-                                想要复制图片上的中英文？一键精准识别，一秒高效提取，提升效率竟然如此简单。
-                            </p>
-                        </div>
-                        <div class="m-auto">
-                            <iframe class="rounded office-card-video"
-                                src="//player.bilibili.com/player.html?aid=207492113&bvid=BV1Rh411i79d&cid=391639160&page=1"
-                                scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true">
-                            </iframe>
-                        </div>
+                    <div class="m-auto pt-2">
+                        <iframe class="rounded office-card-video"
+                            src="//player.bilibili.com/player.html?aid=293415218&bvid=BV1Tf4y177NX&cid=422302294&page=1">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="card office-card">
+                    <img class="card-img-top" src="./img/office/截图录屏.png" alt="Card image" style="width:80px">
+                    <div class="card-body p-0">
+                        <h4 class="card-title">截图录屏</h4>
+                        <p class="card-text">
+                            有价值的图文资料，急待分享的趣味画面，截图录屏助您无任何负担的随时捕捉。
+                        </p>
+                    </div>
+                    <div class="m-auto pt-2">
+                        <iframe class="rounded office-card-video"
+                            src="//player.bilibili.com/player.html?aid=545116635&bvid=BV1pi4y1A7AQ&cid=324565355&page=1">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="card office-card">
+                    <img class="card-img-top" src="./img/office/ocr.png" alt="Card image" style="width:80px">
+                    <div class="card-body p-0">
+                        <h4 class="card-title">OCR</h4>
+                        <p class="card-text">
+                            想要复制图片上的中英文？一键精准识别，一秒高效提取，提升效率竟然如此简单。
+                        </p>
+                    </div>
+                    <div class="m-auto pt-2">
+                        <iframe class="rounded office-card-video"
+                            src="//player.bilibili.com/player.html?aid=207492113&bvid=BV1Rh411i79d&cid=391639160&page=1">
+                        </iframe>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <!-- 页脚 -->
+    <footer class="font-weight-bold w-100 bg-dark">
+        <div class="container text-center text-md-left">
+            <div class="row">
+                <div class="col-md-3 mx-auto">
+                    <h5 class="font-weight-bold mt-3 mb-4">关于Deepin</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#"> 关于我们</a>
+                        </li>
+                        <li>
+                            <a href="#">联系我们</a>
+                        </li>
+                        <li>
+                            <a href="#">条款协议</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="col-md-3 mx-auto">
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">海外社区</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#">西班牙</a>
+                        </li>
+                        <li>
+                            <a href="#">斯洛伐克</a>
+                        </li>
+                        <li>
+                            <a href="#">土耳其</a>
+                        </li>
+                        <li>
+                            <a href="#">巴西</a>
+                        </li>
+                        <li>
+                            <a href="#">俄罗斯</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="col-md-3 mx-auto">
+                    <h5 class="font-weight-bold mt-3 mb-4">友情链接</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#">Ventoy</a>
+                        </li>
+                        <li>
+                            <a href="#"> uTools</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr class="w-50 d-block">
+        <!-- 版权信息 -->
+        <div class="text-center py-3 cp-c">
+            © 2011-2022 Wuhan Deepin Technology Co., Ltd.
+        </div>
+    </footer>
 </body>
 
 </html>

@@ -1,7 +1,9 @@
 package com.neu.bean;
 
 /**
- * 对应用户表user的JavaBean User JavaBean
+ * 对应用户表user的JavaBean
+ * 
+ * User JavaBean
  *
  */
 public class User {

@@ -24,6 +24,8 @@ public class UserServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 代码编写处
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         if (session.getAttribute("user") == null) {
             request.getRequestDispatcher("/login.jsp").forward(request, response);
