@@ -11,6 +11,9 @@ import { NavBar } from 'vant';
 import { Tabbar, TabbarItem } from 'vant';
 import { Grid, GridItem } from 'vant';
 import { Icon } from 'vant';
+import { Lazyload } from 'vant';
+import { ActionBar, ActionBarIcon, ActionBarButton } from 'vant';
+import { SubmitBar } from 'vant';
 import '@/assets/iconfont/font_3818916_pxyg4juc3y.css'
 
 // 2. 引入组件样式
@@ -32,4 +35,9 @@ app.use(TabbarItem);
 app.use(Grid);
 app.use(GridItem);
 app.use(Icon);
+app.use(Lazyload);
+app.use(ActionBar);
+app.use(ActionBarIcon);
+app.use(ActionBarButton);
+app.use(SubmitBar);
 app.mount("#app");

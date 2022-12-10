@@ -1,6 +1,15 @@
 <template>
-  <router-view />
+  <router-view></router-view>
 </template>
+
+<script lang="js">
+  import HomeViewVue from './views/HomeView.vue';
+  export default {
+    components: {
+      HomeViewVue
+    }
+  }
+</script>
 
 <style>
 #app {
