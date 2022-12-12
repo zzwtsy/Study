@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Tobbar from '@/components/Tobbar.vue'
+import Tobbar from '@/components/Tabbar.vue'
 import Navbar from '@/components/Navbar.vue';
 import { ref } from 'vue';
 

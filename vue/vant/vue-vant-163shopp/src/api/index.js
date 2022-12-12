@@ -1,9 +1,11 @@
 import axios from "axios";
-import path from "@/api/path";
 
 const api = {
-    getArtList() {
-        return axios.get(path.baseUrl + path.artist);
+    getBannerImg() {
+        return axios.get('http://vueshop.glbuys.com/api/home/index/slide?token=1ec949a15fb709370f');
+    },
+    getGoodsLevel() {
+        return axios.get('http://vueshop.glbuys.com/api/home/index/goodsLevel?token=1ec949a15fb709370f');
     }
 }
 
