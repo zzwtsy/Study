@@ -17,12 +17,17 @@
         </template>
         <template #num>
           <van-button
+            v-model="test"
             icon="minus"
             size="mini"
+            :disabled="mapGoodsNum.get(item.gid) <= 0"
             @click="subGoodsNum(item.gid)"
           ></van-button>
-          {{ mapGoodsNum.get(item.gid) }}
+          <van-button disabled size="mini">{{
+            mapGoodsNum.get(item.gid)
+          }}</van-button>
           <van-button
+            v-model="test"
             icon="plus"
             size="mini"
             @click="addGoodsNum(item.gid)"
@@ -47,7 +52,7 @@
 </template>
 
 <script lang="js">
-import {onMounted, reactive, ref, getCurrentInstance } from 'vue';
+import {onMounted, reactive, ref } from 'vue';
 import Navbar from '@/components/Navbar.vue';
 import Tobbar from '@/components/Tabbar.vue';
 import {showToast} from 'vant';
@@ -65,28 +70,29 @@ export default {
     const mapPrice = new Map();
     let mapGoodsNum = new Map();
     let goodsNum =ref(1);
+    let test = ref(0);
     let price = ref(0);
     let checkAllStatus = false;
     let arts = reactive({
       artList: []
     });
     const addGoodsNum = (gid) => {
-      console.log(gid);
       let num = mapGoodsNum.get(gid);
-      console.log(num);
       mapGoodsNum.set(gid,num + 1);
+      test.value = test.value + 1;
+      sumPrice();
     }
     const subGoodsNum = (gid) => {
-      console.log(gid);
       let num = mapGoodsNum.get(gid);
-      console.log(num);
       mapGoodsNum.set(gid,num - 1);
+      test.value = test.value - 1;
+      sumPrice();
     }
     //选择商品时计算已选择商品的总价格
     const sumPrice = () => {
       let count = 0;
       checked.value.forEach(value => {
-        count += mapPrice.get(value);
+        count += mapPrice.get(value) * mapGoodsNum.get(value);
       });
       price.value = count * 100;
     }
@@ -105,7 +111,7 @@ export default {
     const totalsPrice = () => {
       let count = 0;
       arts.artList.forEach(element => {
-        count = count + element.price;
+        count = count + (element.price * mapGoodsNum.get(element["gid"]));
       });
       price.value = count * 100;
     };
@@ -139,6 +145,7 @@ export default {
       price,
       goodsNum,
       mapGoodsNum,
+      test
     }
   }
 }
